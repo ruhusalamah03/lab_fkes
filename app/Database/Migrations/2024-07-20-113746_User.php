@@ -19,9 +19,9 @@ class User extends Migration
                 'type'              => 'VARCHAR',
                 'constraint'        => '50',
             ],
-            'nim'               => [
-                'type'              => 'INT',
-                'constraint'        => '15',
+            'email'               => [
+                'type'              => 'VARCHAR',
+                'constraint'        => '30',
             ],
             'password_user'     => [
                 'type'              => 'VARCHAR',

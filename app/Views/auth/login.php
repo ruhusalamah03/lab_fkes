@@ -6,14 +6,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>lebfkes Login</title>
+    <title>Lab Fkes Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -42,6 +41,7 @@
                                 <h1 class="h4 text-gray-900 mb-4">Selamat datang</h1>
                             </div>
                             <form class="user">
+                            <form method="POST" action="#" class="needs-validation" novalidate="";>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan Nama...">
                                 </div>
@@ -55,8 +55,9 @@
                                     </div>
                                 </div>
                                 <a href="<?=('labfkes');?>" class="btn btn-primary btn-user btn-block">
-                                    masuk
+                                    Masuk
                                 </a>
+                            </form>
                             </form>
                         </div>
                     </div>
@@ -65,7 +66,7 @@
         </div>
     </div>
     <footer>
-        <p>COPYRIGHT © 2024 Leb Fkes</p>
+        <p>COPYRIGHT © 2024 Lab Fkes</p>
     </footer>
 </div>
 
