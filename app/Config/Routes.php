@@ -37,3 +37,5 @@ $routes->get('/peminjaman', 'Home::peminjaman');
 $routes->get('/pengembalian', 'Home::pengembalian');
 $routes->get('/laporan', 'Home::laporan');
 $routes->get('/prasat', 'Home::prasat');
+
+$routes->presenter('barang');
