@@ -51,7 +51,10 @@
                 </a>
                 <div id="collapseInventarisir" class="collapse" aria-labelledby="headingInventarisir" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+<<<<<<< HEAD
                         <!-- <h6 class="collapse-header">Login Screens:</h6> -->
+=======
+>>>>>>> 585d91ca4c4a128daf82a09e3e03300c638970a0
                         <a class="collapse-item" href=<?=('databarang');?>>Data Barang</a>
                         <a class="collapse-item" href=<?=('barangkeluar');?>>Barang keluar</a>
                         <a class="collapse-item" href=<?=('stokbarang');?>>Stok Barang</a>
