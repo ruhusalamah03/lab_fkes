@@ -5,18 +5,26 @@
 <div class="container-fluid">
     
 
-<!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Tables</h1>
-<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-    For more information about DataTables, please visit the <a target="_blank"
-        href="https://datatables.net">official DataTables documentation</a>.</p>
+
 <!-- tabel -->
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
-        <h6 class="m-0 font-weight-bold text-primary">data barang</h6>
-        <button class="btn btn-success btn-sm">
-            <i class="fas fa-plus"></i> Tambah Data
-        </button>
+        <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
+        <div class="button-group">
+            <a href="#" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#modaladd">
+                <span class="icon text-white-50">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span class="text">Tambah Data</span>
+            </a>
+
+            <a href="/admin/data-mhs-print" target="_blank" class="btn btn-info btn-icon-split btn-sm">
+                <span class="icon text-white-50">
+                    <i class="fas fa-print"></i>
+                </span>
+                <span class="text">Print Data</span>
+            </a>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -40,7 +48,7 @@
                     <div class="col-md-6 text-right">
                     <div id="dataTable_filter" class="dataTable_filter">
                         <label>
-                            Pencarian:
+                            pencarian:
                             <input type="search" class="from-control from-control-sm" placeholder aria-controls="dataTable">
                         </label>
                     </div> 
@@ -52,25 +60,13 @@
                         <th>Nomor</th>
                         <th>Nama Barang</th>
                         <th>Spesifikasi</th>
-                        <th>Tahun Pembelian</th>
+                        <th>Tanggal Pembelian</th>
                         <th>Kategori</th>
-                        <th>Kondisi Rusak</th>
-                        <th>Kondisi Baik</th>
-                        <th>Jumlah akhir</th>
+                        <th>Jumlah</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
-                <!-- <tfoot>
-                    <tr>
-                        <th>Nomor</th>
-                        <th>Nama Barang</th>
-                        <th>Spesifikasi</th>
-                        <th>Tahun Pembelian</th>
-                        <th>Kategori</th>
-                        <th>Kondisi Rusak</th>
-                        <th>Kondisi Baik</th>
-                        <th>Jumlah akhir</th>
-                    </tr>
-                </tfoot> -->
+            
                 <tbody>
                     <tr>
                         <td>1</td>
@@ -78,17 +74,14 @@
                         <td>General Care</td>
                         <td>2021</td>
                         <td>BHP</td>
-                        <td>0</td>
-                        <td>2</td>
-                        <td>2</td>
-
-                        <!-- <td>
-                            <button class="btn btn-primary btn-sm">
+                        <td>5</td>
+                        <td>
+                        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaledit">
                                 <i class="fas fa-pencil-alt"></i>
-                            </button>
-                            <button class="btn btn-danger btn-sm">
+                            
+                         <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modaldel">
                                 <i class="fas fa-trash"></i>
-                        </td> -->
+                        </td>
                     </tr>
                     <tr>
                         <td>2</td>
@@ -97,24 +90,291 @@
                         <td>2017</td>
                         <td>Alat</td>
                         <td>1</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <!-- <td>
-                            <button class="btn btn-primary btn-sm">
+                        <td>
+                        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaledit">
                                 <i class="fas fa-pencil-alt"></i>
                             </button>
-                            <button class="btn btn-danger btn-sm">
+                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modaldel">
                                 <i class="fas fa-trash"></i>
-                        </td> -->
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+              </nav>
+    </div>
+
+</div>
+<!-- Modal Add -->
+
+<div class="modal fade" id="modaladd" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content text-light bg-primary">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah Data Barang</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="/admin/addMhs">
+                        
+                        <div class="form-group">
+                            <label>Nama Barang*</label>
+                            <input type="text" name="brg_nama" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Spesifikasi*</label>
+                            <input type="text" name="spes_ifi" class="form-control" required>
+                            </div>
+
+                        <div class="form-group">
+                            <label>Tanggal pembelian (dd/mm/yyyy)*</label>
+                            <input type="date" id="tglbeli" name="tgl_beli" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Kategori*</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="amhs_jk" value="L">
+                                <label class="form-check-label">BHP</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="amhs_jk" value="P">
+                                <label class="form-check-label">Plastik</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Jumlah*</label>
+                            <input type="number" name="amhs_nim" class="form-control" required>
+                        </div>
+
+                        <!-- <div class="form-group">
+                            <label>Alamat*</label>
+                            <textarea class="form-control" name="amhs_alamat" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email*</label>
+                            <input type="email" name="amhs_email" class="form-control" required>
+                        </div>
+                
+                        <div class="form-group">
+                            <label>Pas Foto (.jpg / .png)</label>
+                            <input type="file" name="amhs_photo" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file">
+                        </div> -->
+
+                        <br>
+                        *Required
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Tambah</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Modal-->
+    <!-- <div class="modal fade " id="modalview" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content text-light bg-primary">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detail Data Mahasiswa</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body"> */jequary pindahkan ke haed
+                    <form method="#" enctype="multipart/form-data" action="#">
+                         <div class="form-group" style="text-align:center;">
+                            <img id="vmhsphoto" src="" style="width: 200px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label>NIM</label>
+                            <input type="number" id="vmhsnim" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" id="vmhsnama" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tanggal Lahir (dd/mm/yyyy)</label>
+                            <input type="date" id="vmhsdob" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Jenis Kelamin</label>
+                            <input type="text" id="vmhsjk" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Alamat</label>
+                            <textarea class="form-control" id="vmhsalamat" rows="3" disabled></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" id="vmhsemail" class="form-control" disabled>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    
+ <!-- Edit Modal-->
+ <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content text-light bg-primary">
+            <div class="modal-header">
+                <h5 class="modal-title">Ubah Data Barang</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data" action="/admin/editMhs">
+                    <div class="form-group">
+                        <label>Nama Barang*</label>
+                        <input type="text" id="brgnama" name="brgnama" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Spesifikasi*</label>
+                        <input type="text" id="spesifi" name="spesifi" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal pembelian (dd/mm/yyyy)*</label>
+                        <input type="date" id="tglbeli" name="tglbeli" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori*</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="kategori" value="BHP" required>
+                            <label class="form-check-label">BHP</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="kategori" value="Alat" required>
+                            <label class="form-check-label">Alat</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Kondisi*</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="kondisi" value="Baik" required>
+                            <label class="form-check-label">Baik</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="kondisi" value="Rusak" required>
+                            <label class="form-check-label">Rusak</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah*</label>
+                        <input type="number" id="emhsnim" name="emhs_nim" class="form-control" required>
+                    </div>
+                    <input type="number" id="emhsid" name="emhs_id" hidden>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-success">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-</div>
-<!-- End of Main Content -->
+    <!-- Hapus Modal-->
+    <div class="modal fade" id="modaldel" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content text-light bg-primary">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hapus Data Barang</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="/admin/delMhs">
+                        <div class="form-group" style="text-align:center;">
+                            <div class="form-group">
+                                <img id="dmhsphoto" src="" style="width:200px;">
+                            </div>
+                        </div>
 
+                        <!-- <div class="form-group">
+                            <label>NIM Mahasiswa</label>
+                            <input type="number" id="dmhsnim" class="form-control" disabled>
+                        </div> -->
+
+                        <div class="form-group">
+                            <label>Nama Barang</label>
+                            <input type="text" id="brgnama" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Spesifikasi</label>
+                            <input type="text" id="spesifi" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tanggal pembelian (dd/mm/yyyy)</label>
+                            <input type="date" id="tglbeli" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Kategori</label>
+                            <input type="text" id="dmhsjk" class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Jumlah</label>
+                            <input type="number" id="dmhsnim" class="form-control" disabled>
+                        </div>
+
+                        <!-- <div class="form-group">
+                            <label>Alamat</label>
+                            <textarea class="form-control" id="dmhsalamat" rows="3" disabled></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" id="dmhsemail" class="form-control" disabled>
+                        </div> -->
+
+                        <!-- <input type="text" id="dmhsoldphoto" name="dmhs_oldphoto" hidden required>
+                        <input type="number" id="dmhsid" name="dmhs_id" hidden required> -->
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Hapus</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 <?=$this->endSection()?>

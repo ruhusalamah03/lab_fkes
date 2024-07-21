@@ -45,7 +45,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-4">
                                             <div class="h5 mb-0 font-weight-bold text-info text-uppercase">
-                                                Surat Masuk</div>
+                                                Prasat</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-envelope fa-2x text-gray-300"></i>

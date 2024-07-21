@@ -64,7 +64,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Login Screens:</h6> -->
-                        <a class="collapse-item" href=<?=('barangmasuk');?>>Barang Masuk</a>
+                        <a class="collapse-item" href=<?=('databarang');?>>Data Barang</a>
                         <a class="collapse-item" href=<?=('barangkeluar');?>>Barang keluar</a>
                         <a class="collapse-item" href=<?=('stokbarang');?>>Stok Barang</a>
                 </div>
@@ -76,19 +76,25 @@
                     <span>Prasat</span></a>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Laboratorium</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                </a> -->
+                <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <h6 class="collapse-header">Login Screens:</h6> -->
+                        
                         <a class="collapse-item" href=<?=('peminjaman');?>>Peminjaman</a>
                         <a class="collapse-item" href=<?=('pengembalian');?>>Pengembalian</a>
                         <a class="collapse-item" href=<?=('laporan');?>>Laporan</a>
-                </div>
+                </div> -->
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href=<?=('laporan');?>>
+                    <i class="fas fa-fw fa-file"></i>
+                    <span>Laporan</span></a>
             </li>
 
             <!-- <li class="nav-item">
