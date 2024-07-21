@@ -51,12 +51,8 @@
                 </a>
                 <div id="collapseInventarisir" class="collapse" aria-labelledby="headingInventarisir" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-<<<<<<< HEAD
                         <!-- <h6 class="collapse-header">Login Screens:</h6> -->
                         <a class="collapse-item" href=<?=('databarang');?>>Data Barang</a>
-=======
-                        <a class="collapse-item" href=<?=('barangmasuk');?>>Barang Masuk</a>
->>>>>>> 0076ef8935dbc2d96cf34803e40f97746409325e
                         <a class="collapse-item" href=<?=('barangkeluar');?>>Barang keluar</a>
                         <a class="collapse-item" href=<?=('stokbarang');?>>Stok Barang</a>
                 </div>
@@ -69,7 +65,6 @@
                 </a>
             </li>
 
-<<<<<<< HEAD
             <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
@@ -77,15 +72,6 @@
                     <span>Laboratorium</span>
                 </a> -->
                 <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-=======
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLaboratorium"
-                    aria-expanded="true" aria-controls="collapseLaboratorium">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Laboratorium</span>
-                </a>
-                <div id="collapseLaboratorium" class="collapse" aria-labelledby="headingLaboratorium" data-parent="#accordionSidebar">
->>>>>>> 0076ef8935dbc2d96cf34803e40f97746409325e
                     <div class="bg-white py-2 collapse-inner rounded">
                         
                         <a class="collapse-item" href=<?=('peminjaman');?>>Peminjaman</a>
