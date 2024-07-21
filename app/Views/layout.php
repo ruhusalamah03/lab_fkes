@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab Fkes</title>
-    <link href="<?= base_url('vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="<?= base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
 </head>
@@ -51,70 +51,39 @@
                 </a>
                 <div id="collapseInventarisir" class="collapse" aria-labelledby="headingInventarisir" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-<<<<<<< HEAD
-                        <!-- <h6 class="collapse-header">Login Screens:</h6> -->
-=======
->>>>>>> 585d91ca4c4a128daf82a09e3e03300c638970a0
-                        <a class="collapse-item" href=<?=('databarang');?>>Data Barang</a>
-                        <a class="collapse-item" href=<?=('barangkeluar');?>>Barang keluar</a>
-                        <a class="collapse-item" href=<?=('stokbarang');?>>Stok Barang</a>
+                        <a class="collapse-item" href=<?= base_url('databarang');?>>Data Barang</a>
+                        <a class="collapse-item" href=<?= base_url('barangkeluar');?>>Barang keluar</a>
+                        <a class="collapse-item" href=<?= base_url('stokbarang');?>>Stok Barang</a>
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href=<?=('prasat');?>>
+                <a class="nav-link" href=<?= base_url('prasat');?>>
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Prasat</span>
                 </a>
             </li>
 
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Laboratorium</span>
-                </a> -->
-                <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        
-                        <a class="collapse-item" href=<?=('peminjaman');?>>Peminjaman</a>
-                        <a class="collapse-item" href=<?=('pengembalian');?>>Pengembalian</a>
-                        <a class="collapse-item" href=<?=('laporan');?>>Laporan</a>
-                </div> -->
-            </li>
-
             <li class="nav-item">
-                <a class="nav-link" href=<?=('laporan');?>>
+                <a class="nav-link" href=<?= base_url('laporan');?>>
                     <i class="fas fa-fw fa-file"></i>
                     <span>Laporan</span></a>
             </li>
 
-            <!-- <li class="nav-item">
-                <a class="nav-link" href=<?=('suratmasuk');?>>
-                    <i class="fas fa-fw fa-envelope"></i>
-                    <span>Surat Masuk</span></a>
-            </li> -->
-
-            <!-- <li class="nav-item">
-                <a class="nav-link" href=<?=('stokbarang');?>>
-                    <i class="fas fa-fw fa-box"></i>
-                    <span>Stok Barang</span></a>
-            </li> -->
-
             <li class="nav-item">
-                <a class="nav-link" href=<?=('manajemenuser');?>>
+                <a class="nav-link" href=<?= base_url('manajemenuser');?>>
                     <i class="fas fa-fw fa-clipboard"></i>
                     <span>Manajemen User</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href=<?=('riwayatpeminjaman');?>>
+                <a class="nav-link" href=<?= base_url('riwayatpeminjaman');?>>
                     <i class="fas fa-fw fa-clock"></i>
                     <span>Riwayat Peminjaman</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href=<?=('kontak');?>>
+                <a class="nav-link" href=<?= base_url('kontak');?>>
                     <i class="fas fa-fw fa-phone"></i>
                     <span>Kontak</span></a>
             </li>
@@ -311,13 +280,12 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Sarah Syakira</span>
-                                <img class="img-profile rounded-circle"
-                                    src="<?= base_url('img/Sarah.png') ?>">
+                                <img class="img-profile rounded-circle" src="<?= base_url('img/Sarah.png') ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href=<?= base_url('admin');?>>
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -369,7 +337,7 @@
                 <div class="modal-body">tekan "Keluar" jika anda ingin mengakhiri kegiatan.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href=<?=('keluar');?>>keluar</a>
+                    <a class="btn btn-primary" href=<?= site_url('auth/logout');?>>Keluar</a>
                 </div>
             </div>
         </div>
