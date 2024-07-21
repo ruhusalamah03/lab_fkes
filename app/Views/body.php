@@ -61,7 +61,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-4">
                                             <div class="h5 mb-0 font-weight-bold text-warning text-uppercase">
-                                                informsi</div>
+                                                informasi</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-newspaper fa-2x text-gray-300"></i>
@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
-                                    <img src="img/leb.jpeg" alt="Logo2" class="img-fluid your-custom-logo ml-3"style="width: 25rem;">
+                                    <img src="<?= base_url('img/leb.jpeg') ?>" alt="Logo2" class="img-fluid your-custom-logo ml-3"style="width: 25rem;">
                                         <!-- <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                                             src="img/undraw_posting_photo.svg" alt="..."> -->
                                     </div>
