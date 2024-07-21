@@ -5,7 +5,15 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
+
+$routes->get('/login', 'Auth::login');
+$routes->post('/auth/loginProcess', 'Auth::loginProcess');
+$routes->get('/auth/logout', 'Auth::logout'); 
+
+// $routes->group('admin', function($routes){
+//     $routes->get('/', 'Admin::index');
+// })
+
 $routes->get('/labfkes', 'Home::labfkes');
 $routes->get('/databarang', 'Home::databarang');
 $routes->get('/barangmasuk', 'Home::barangmasuk');
@@ -22,7 +30,6 @@ $routes->get('/KG', 'Home::KG');
 $routes->get('/KKOM', 'Home::KKOM');
 $routes->get('/KD', 'Home::KD');
 $routes->get('/IBD', 'Home::IBD');
-$routes->get('/keluar', 'Home::keluar');
 $routes->get('/masuk', 'Home::masuk');
 $routes->get('/admin', 'Home::admin');
 $routes->get('/kontak', 'Home::kontak');
