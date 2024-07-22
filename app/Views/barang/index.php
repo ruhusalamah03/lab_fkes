@@ -32,7 +32,6 @@
                     </span>
                     <span class="text">Tambah Data</span>
                 </a>
-
                 <a href="/admin/data-mhs-print" target="_blank" class="btn btn-info btn-icon-split btn-sm">
                     <span class="icon text-white-50">
                         <i class="fas fa-print"></i>
@@ -289,9 +288,8 @@
                 <p>Anda yakin ingin menghapus data barang ini?</p>
             </div>
             <div class="modal-footer">
-                <form method="post" id="deleteForm" action="">
+                <form method="post" id="deleteForm" action="/barang/delete/">
                     <?= csrf_field() ?>
-                    <input type="hidden" name="_method" value="DELETE">
                     <button class="btn btn-light" type="submit">Hapus</button>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
                 </form>
@@ -328,5 +326,32 @@
         });
     });
 </script>
+
+<style>
+    table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center; 
+    vertical-align: middle; 
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    justify-content: center; 
+    align-items: center; 
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+}
+</style>
 
 <?= $this->endSection() ?>

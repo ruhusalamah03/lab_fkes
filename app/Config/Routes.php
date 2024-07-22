@@ -10,9 +10,6 @@ $routes->get('/login', 'Auth::login');
 $routes->post('/auth/loginProcess', 'Auth::loginProcess');
 $routes->get('/auth/logout', 'Auth::logout'); 
 
-// $routes->group('admin', function($routes){
-//     $routes->get('/', 'Admin::index');
-// })
 
 $routes->get('/labfkes', 'Home::labfkes');
 $routes->get('/databarang', 'Home::databarang');
@@ -40,10 +37,12 @@ $routes->get('/prasat', 'Home::prasat');
 $routes->get('/informasi', 'Home::informasi');
 
 
-$routes->presenter('barang');
 $routes->get('/barang/create', 'Barang::create');
 $routes->post('/barang/new', 'Barang::store');
 $routes->get('/barang/edit/(:num)', 'Barang::edit/$1');
 $routes->post('/barang/update/(:num)', 'Barang::update/$1');
-// $routes->add('barang/edit/(:segment)', 'Barang::edit/$1');
+$routes->post('/barang/delete/(:segment)', 'Barang::delete/$1');
+$routes->presenter('barang');
+
+
 

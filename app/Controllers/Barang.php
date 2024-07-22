@@ -9,6 +9,7 @@ use CodeIgniter\RESTful\ResourcePresenter;
 class Barang extends ResourcePresenter
 {
     protected $barangModel;
+    protected $helpers = ['user'];
 
     public function __construct()
     {
@@ -22,7 +23,6 @@ class Barang extends ResourcePresenter
     public function index()
     {
         $data['barang'] = $this->barangModel->findAll();
-
         return view('barang/index', $data);
     }
 
@@ -176,6 +176,7 @@ class Barang extends ResourcePresenter
      */
     public function delete($id = null)
     {
-        //
+        $this->barangModel->where('id', $id)->delete();
+        return redirect()->to(site_url('barang'))->with('success', 'Data Berhasil Dihapus');
     }
 }

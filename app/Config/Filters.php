@@ -109,7 +109,7 @@ class Filters extends BaseFilters
         'isLoggedIn' => ['before' => 
             [
                 'labfkes', 
-                'databarang',
+                'barang/*',
             ]
         ]
     ];
