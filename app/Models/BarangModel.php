@@ -13,4 +13,5 @@ class BarangModel extends Model
     // protected $useSoftDeletes   = false;
     // protected $protectFields    = true;
     protected $allowedFields    = ['kode_brg', 'nama_brg', 'spesifikasi', 'thn_pembelian', 'kategori', 'kondisi_baik', 'kondisi_rusak', 'jml_akhir'];
+    protected $useTimestamps    = true;
 }

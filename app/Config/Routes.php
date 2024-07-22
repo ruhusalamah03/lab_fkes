@@ -41,5 +41,6 @@ $routes->get('/prasat', 'Home::prasat');
 $routes->presenter('barang');
 $routes->get('/barang/create', 'Barang::create');
 $routes->post('/barang/new', 'Barang::store');
-
+$routes->get('/barang/edit/', 'Barang::edit/$1');
+$routes->post('/barang/update/', 'Barang::update/$1');
 

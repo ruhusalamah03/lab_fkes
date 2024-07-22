@@ -95,8 +95,19 @@ class Barang extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        return view('barang/edit');
+        if ($id == null) {
+            return redirect()->to('/barang')->with('error', 'Data tidak ditemukan.');
+        }
+    
+        $data['barang'] = $this->barangModel->find($id);
+    
+        if (empty($data['barang'])) {
+            return redirect()->to('/barang')->with('error', 'Data tidak ditemukan.');
+        }
+    
+        return view('barang/edit', $data);
     }
+
 
     /**
      * Process the updating, full or partial, of a specific resource object.
@@ -108,7 +119,7 @@ class Barang extends ResourcePresenter
      */
     public function update($id = null)
     {
-        //
+        
     }
 
     /**
