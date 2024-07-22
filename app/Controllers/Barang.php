@@ -56,7 +56,34 @@ class Barang extends ResourcePresenter
      */
     public function create()
     {
-        //
+        return view('barang/create');
+    }
+
+    public function store()
+    {
+        $kode_brg = $this->request->getPost('kode_brg');
+    
+    // cek jika kode barang sudah ada
+    $existingBarang = $this->barangModel->where('kode_brg', $kode_brg)->first();
+    
+    if ($existingBarang) {
+        return redirect()->to('/barang')->with('error', 'Kode Barang sudah ada. Mohon gunakan kode yang lain.');
+    }
+    
+    $data = [
+        'kode_brg' => $kode_brg,
+        'nama_brg' => $this->request->getPost('brg_nama'),
+        'spesifikasi' => $this->request->getPost('spesifikasi'),
+        'thn_pembelian' => $this->request->getPost('thn_pembelian'),
+        'kategori' => $this->request->getPost('kategori'),
+        'kondisi_baik' => $this->request->getPost('kondisi_baik'),
+        'kondisi_rusak' => $this->request->getPost('kondisi_rusak'),
+        'jml_akhir' => $this->request->getPost('jml_akhir'),
+    ];
+
+    $this->barangModel->insert($data);
+
+    return redirect()->to('/barang')->with('success', 'Data barang berhasil ditambahkan.');
     }
 
     /**

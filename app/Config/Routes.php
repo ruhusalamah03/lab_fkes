@@ -39,3 +39,7 @@ $routes->get('/laporan', 'Home::laporan');
 $routes->get('/prasat', 'Home::prasat');
 
 $routes->presenter('barang');
+$routes->get('/barang/create', 'Barang::create');
+$routes->post('/barang/new', 'Barang::store');
+
+

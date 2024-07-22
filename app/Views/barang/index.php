@@ -3,8 +3,23 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
+<?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?= session()->getFlashdata('success') ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<?php endif; ?>
 
-
+<?php if (session()->getFlashdata('error')): ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?= session()->getFlashdata('error') ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<?php endif; ?>
 
     <!-- tabel -->
     <div class="card shadow mb-4">
@@ -106,6 +121,7 @@
     </div>
 
 </div>
+
 <!-- Modal Add -->
 
 <div class="modal fade" id="modaladd" tabindex="-1" role="dialog" aria-hidden="true">
@@ -118,6 +134,7 @@
                 </button>
             </div>
             <div class="modal-body">
+
                 <form method="post" enctype="multipart/form-data" action="/barang/new">
 
                     <div class="form-group">
