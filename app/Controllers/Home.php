@@ -193,4 +193,12 @@ class Home extends BaseController
 
         return view('prasat', $data);
     }
+
+    public function informasi(){
+        $data = [
+            'title' => 'labfkes',
+        ];
+
+        return view('informasi', $data);
+    }
 }

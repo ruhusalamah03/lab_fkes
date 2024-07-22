@@ -28,6 +28,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-4">
+                                        <a href="databarang">
                                             <div class="h5 mb-0 font-weight-bold text-primary text-uppercase">
                                                 Data Barang</div>
                                         </div>
@@ -44,6 +45,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-4">
+                                        <a href="prasat">
                                             <div class="h5 mb-0 font-weight-bold text-info text-uppercase">
                                                 Prasat</div>
                                         </div>
@@ -60,11 +62,12 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-4">
-                                            <div class="h5 mb-0 font-weight-bold text-warning text-uppercase">
+                                        <a href="informasi">
+                                            <div class="h5 mb-0 font-weight-bold text-warning text-uppercase" >
                                                 informasi</div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-newspaper fa-2x text-gray-300"></i>
+                                        <div class="col-auto" >
+                                            <i class="fas fa-newspaper fa-2x text-gray-300" ></i>
                                         </div>
                                     </div>
                                 </div>
