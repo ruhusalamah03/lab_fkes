@@ -95,17 +95,28 @@ class Barang extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        if ($id == null) {
-            return redirect()->to('/barang')->with('error', 'Data tidak ditemukan.');
+        $id = $this->request->getPost('id');
+
+        $barang = $this->barangModel->where('id', $id)->first();
+        if(is_object($barang)) {
+            $data['barang'] = $barang;
+            return view('barang/edit', $data);
+        } else {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
+        
+        // if ($id == null) {
+        //     return redirect()->to('/barang')->with('error', 'Data tidak ditemukan.');
+        // }
     
-        $data['barang'] = $this->barangModel->find($id);
+        // $data['barang'] = $this->barangModel->find($id);
     
-        if (empty($data['barang'])) {
-            return redirect()->to('/barang')->with('error', 'Data tidak ditemukan.');
-        }
+        // if (empty($data['barang'])) {
+        //     return redirect()->to('/barang')->with('error', 'Data tidak ditemukan.');
+        // }
     
-        return view('barang/edit', $data);
+
+        // return view('barang/edit', $data);
     }
 
 
@@ -119,6 +130,28 @@ class Barang extends ResourcePresenter
      */
     public function update($id = null)
     {
+        $data = $this->request->getPost();
+        $this->barangModel->update($id, $data);
+        return redirect()->to(site_url('barang'))->with('success', 'Data Berhasil Diubah');
+        // if ($id == null) {
+        //     return redirect()->to('/barang')->with('error', 'ID tidak valid.');
+        // }
+    
+        // $data = [
+        //     'kode_brg' => $this->request->getPost('kode_brg'),
+        //     'nama_brg' => $this->request->getPost('nama_brg'),
+        //     'spesifikasi' => $this->request->getPost('spesifikasi'),
+        //     'thn_pembelian' => $this->request->getPost('thn_pembelian'),
+        //     'kategori' => $this->request->getPost('kategori'),
+        //     'kondisi_baik' => $this->request->getPost('kondisi_baik'),
+        //     'kondisi_rusak' => $this->request->getPost('kondisi_rusak'),
+        //     'jml_akhir' => $this->request->getPost('jml_akhir'),
+        // ];
+    
+
+        // $this->barangModel->update($id, $data);
+    
+        // return redirect()->to('/barang')->with('success', 'Data barang berhasil diperbarui.');
         
     }
 
