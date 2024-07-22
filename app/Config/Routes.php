@@ -43,6 +43,7 @@ $routes->get('/informasi', 'Home::informasi');
 $routes->presenter('barang');
 $routes->get('/barang/create', 'Barang::create');
 $routes->post('/barang/new', 'Barang::store');
-$routes->get('/barang/edit/', 'Barang::edit/$1');
-$routes->post('/barang/update/', 'Barang::update/$1');
+$routes->get('/barang/edit/(:num)', 'Barang::edit/$1');
+$routes->post('/barang/update/(:num)', 'Barang::update/$1');
+// $routes->add('barang/edit/(:segment)', 'Barang::edit/$1');
 

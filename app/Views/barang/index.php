@@ -84,40 +84,29 @@
                         </tr>
                     </thead>
                     <tbody>
-    <?php $i = 1; ?>
-    <?php foreach ($barang as $dbarang) : ?>
-        <tr>
-            <th scope="row"><?= $i++; ?></th>
-            <td><?= esc($dbarang->kode_brg); ?></td>
-            <td><?= esc($dbarang->nama_brg); ?></td>
-            <td><?= esc($dbarang->spesifikasi); ?></td>
-            <td><?= esc($dbarang->thn_pembelian); ?></td>
-            <td><?= esc($dbarang->kategori); ?></td>
-            <td><?= esc($dbarang->kondisi_baik); ?></td>
-            <td><?= esc($dbarang->kondisi_rusak); ?></td>
-            <td><?= esc($dbarang->jml_akhir); ?></td>
-            <td>
-                <button class="btn btn-primary btn-sm edit-button" data-toggle="modal" data-target="#modaledit"
-                    data-id="<?= esc($dbarang->id); ?>"
-                    data-kode_brg="<?= esc($dbarang->kode_brg); ?>"
-                    data-nama_brg="<?= esc($dbarang->nama_brg); ?>"
-                    data-spesifikasi="<?= esc($dbarang->spesifikasi); ?>"
-                    data-thn_pembelian="<?= esc($dbarang->thn_pembelian); ?>"
-                    data-kategori="<?= esc($dbarang->kategori); ?>"
-                    data-kondisi_baik="<?= esc($dbarang->kondisi_baik); ?>"
-                    data-kondisi_rusak="<?= esc($dbarang->kondisi_rusak); ?>"
-                    data-jml_akhir="<?= esc($dbarang->jml_akhir); ?>">
-                    <i class="fas fa-pencil-alt"></i>
-                </button>
-                <button class="btn btn-danger btn-sm delete-button" data-toggle="modal" data-target="#modaldel"
-                    data-id="<?= esc($dbarang->id); ?>">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </td>
-        </tr>
-    <?php endforeach; ?>
-</tbody>
-
+                        <?php $i = 1; ?>
+                        <?php foreach ($barang as $dbarang) : ?>
+                            <tr>
+                                <th scope="row"><?= $i++; ?></th>
+                                <td><?= esc($dbarang->kode_brg); ?></td>
+                                <td><?= esc($dbarang->nama_brg); ?></td>
+                                <td><?= esc($dbarang->spesifikasi); ?></td>
+                                <td><?= esc($dbarang->thn_pembelian); ?></td>
+                                <td><?= esc($dbarang->kategori); ?></td>
+                                <td><?= esc($dbarang->kondisi_baik); ?></td>
+                                <td><?= esc($dbarang->kondisi_rusak); ?></td>
+                                <td><?= esc($dbarang->jml_akhir); ?></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm edit-button" data-toggle="modal" data-target="#modaledit" data-id="<?= esc($dbarang->id); ?>" data-kode_brg="<?= esc($dbarang->kode_brg); ?>" data-nama_brg="<?= esc($dbarang->nama_brg); ?>" data-spesifikasi="<?= esc($dbarang->spesifikasi); ?>" data-thn_pembelian="<?= esc($dbarang->thn_pembelian); ?>" data-kategori="<?= esc($dbarang->kategori); ?>" data-kondisi_baik="<?= esc($dbarang->kondisi_baik); ?>" data-kondisi_rusak="<?= esc($dbarang->kondisi_rusak); ?>" data-jml_akhir="<?= esc($dbarang->jml_akhir); ?>">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-sm delete-button" data-toggle="modal" data-target="#modaldel" data-id="<?= esc($dbarang->id); ?>">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -131,11 +120,9 @@
             </ul>
         </nav>
     </div>
-
 </div>
 
 <!-- Modal Add -->
-
 <div class="modal fade" id="modaladd" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content text-light bg-primary">
@@ -146,66 +133,59 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" enctype="multipart/form-data" action="/barang/new">
+                <form method="post" action="/barang/new">
+                    <?= csrf_field() ?>
                     <div class="form-group">
                         <label>Kode Barang*</label>
-                        <input type="int" name="kode_brg" class="form-control" required>
+                        <input type="text" name="kode_brg" class="form-control" required>
                     </div>
-
                     <div class="form-group">
                         <label>Nama Barang*</label>
                         <input type="text" name="brg_nama" class="form-control" required>
                     </div>
-
                     <div class="form-group">
                         <label>Spesifikasi*</label>
                         <input type="text" name="spesifikasi" class="form-control" required>
                     </div>
-
                     <div class="form-group">
                         <label>Tahun Pembelian (yyyy)*</label>
-                        <input type="year" id="thn_pembelian" name="thn_pembelian" class="form-control" required>
+                        <input type="number" name="thn_pembelian" class="form-control" required>
                     </div>
-
                     <div class="form-group">
                         <label>Kategori*</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" value="ASET">
+                            <input class="form-check-input" type="radio" name="kategori" value="ASET" required>
                             <label class="form-check-label">Aset</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" value="ALAT">
+                            <input class="form-check-input" type="radio" name="kategori" value="ALAT" required>
                             <label class="form-check-label">Alat</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" value="ALAT_DAN_BAHAN">
+                            <input class="form-check-input" type="radio" name="kategori" value="ALAT_BAHAN" required>
                             <label class="form-check-label">Alat dan Bahan</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" value="BHP">
+                            <input class="form-check-input" type="radio" name="kategori" value="HIBAH" required>
                             <label class="form-check-label">BHP</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" value="HIBAH">
+                            <input class="form-check-input" type="radio" name="kategori" value="PERALATAN" required>
                             <label class="form-check-label">Hibah</label>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label>Kondisi Baik*</label>
-                        <input type="int" name="kondisi_baik" class="form-control" required>
+                        <label>Kondisi Baik</label>
+                        <input type="number" name="kondisi_baik" class="form-control" value="0">
                     </div>
-
                     <div class="form-group">
-                        <label>Kondisi Rusak*</label>
-                        <input type="int" name="kondisi_rusak" class="form-control" required>
+                        <label>Kondisi Rusak</label>
+                        <input type="number" name="kondisi_rusak" class="form-control" value="0">
                     </div>
-
                     <div class="form-group">
-                        <label>Jumlah Akhir*</label>
-                        <input type="number" name="jml_akhir" class="form-control" required>
+                        <label>Jumlah Akhir</label>
+                        <input type="number" name="jml_akhir" class="form-control" value="0">
                     </div>
-
                     <br>
                     *Required
 
@@ -213,6 +193,7 @@
                         <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-success">Tambah</button>
                     </div>
+
                 </form>
             </div>
         </div>
@@ -224,64 +205,65 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content text-light bg-primary">
             <div class="modal-header">
-                <h5 class="modal-title">Ubah Data Barang</h5>
+                <h5 class="modal-title">Edit Data Barang</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" enctype="multipart/form-data" action="/barang/update/">
-                    <input type="hidden" name="id" id="id">
+                <form method="post" id="editForm" action="">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="_method" value="post">
                     <div class="form-group">
                         <label>Kode Barang*</label>
-                        <input type="text" name="kode_brg" id="kode_brg" class="form-control" required>
+                        <input type="text" name="kode_brg" id="edit_kode_brg" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Nama Barang*</label>
-                        <input type="text" name="nama_brg" id="nama_brg" class="form-control" required>
+                        <input type="text" name="brg_nama" id="edit_nama_brg" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Spesifikasi*</label>
-                        <input type="text" name="spesifikasi" id="spesifikasi" class="form-control" required>
+                        <input type="text" name="spesifikasi" id="edit_spesifikasi" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Tanggal pembelian (yyyy)*</label>
-                        <input type="text" name="thn_pembelian" id="thn_pembelian" class="form-control" required>
+                        <label>Tahun Pembelian (yyyy)*</label>
+                        <input type="number" name="thn_pembelian" id="edit_thn_pembelian" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Kategori*</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="kategori_aset" value="ASET">
-                            <label class="form-check-label" for="kategori_aset">Aset</label>
+                            <input class="form-check-input" type="radio" name="kategori" id="edit_kategori_aset" value="ASET">
+                            <label class="form-check-label">Aset</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="kategori_alat" value="ALAT">
-                            <label class="form-check-label" for="kategori_alat">Alat</label>
+                            <input class="form-check-input" type="radio" name="kategori" id="edit_kategori_alat" value="ALAT">
+                            <label class="form-check-label">Alat</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="kategori_alat_bahan" value="ALAT_DAN_BAHAN">
-                            <label class="form-check-label" for="kategori_alat_bahan">Alat dan Bahan</label>
+                            <input class="form-check-input" type="radio" name="kategori" id="edit_kategori_alat_bahan" value="ALAT_BAHAN">
+                            <label class="form-check-label">Alat dan Bahan</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="kategori_bhp" value="BHP">
-                            <label class="form-check-label" for="kategori_bhp">BHP</label>
+                            <input class="form-check-input" type="radio" name="kategori" id="edit_kategori_bhp" value="BHP">
+                            <label class="form-check-label">BHP</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="kategori_hibah" value="HIBAH">
-                            <label class="form-check-label" for="kategori_hibah">Hibah</label>
+                            <input class="form-check-input" type="radio" name="kategori" id="edit_kategori_hibah" value="HIBAH">
+                            <label class="form-check-label">Hibah</label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Kondisi Baik*</label>
-                        <input type="number" name="kondisi_baik" id="kondisi_baik" class="form-control" required>
+                        <label>Kondisi Baik</label>
+                        <input type="number" name="kondisi_baik" id="edit_kondisi_baik" class="form-control" value="0">
                     </div>
                     <div class="form-group">
-                        <label>Kondisi Rusak*</label>
-                        <input type="number" name="kondisi_rusak" id="kondisi_rusak" class="form-control" required>
+                        <label>Kondisi Rusak</label>
+                        <input type="number" name="kondisi_rusak" id="edit_kondisi_rusak" class="form-control" value="0">
                     </div>
                     <div class="form-group">
-                        <label>Jumlah*</label>
-                        <input type="number" name="jml_akhir" id="jml_akhir" class="form-control" required>
+                        <label>Jumlah Akhir</label>
+                        <input type="number" name="jml_akhir" id="edit_jml_akhir" class="form-control" value="0">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
@@ -293,10 +275,10 @@
     </div>
 </div>
 
-<!-- Hapus Modal-->
+<!-- Modal Delete -->
 <div class="modal fade" id="modaldel" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content text-light bg-primary">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content text-light bg-danger">
             <div class="modal-header">
                 <h5 class="modal-title">Hapus Data Barang</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -304,89 +286,44 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" enctype="multipart/form-data" action="/admin/delMhs">
-                    <div class="form-group" style="text-align:center;">
-                        <div class="form-group">
-                            <img id="dmhsphoto" src="" style="width:200px;">
-                        </div>
-                    </div>
-
-                    <!-- <div class="form-group">
-                            <label>NIM Mahasiswa</label>
-                            <input type="number" id="dmhsnim" class="form-control" disabled>
-                        </div> -->
-
-                    <div class="form-group">
-                        <label>Nama Barang</label>
-                        <input type="text" id="brgnama" class="form-control" disabled>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Spesifikasi</label>
-                        <input type="text" id="spesifi" class="form-control" disabled>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Tanggal pembelian (dd/mm/yyyy)</label>
-                        <input type="date" id="tglbeli" class="form-control" disabled>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Kategori</label>
-                        <input type="text" id="dmhsjk" class="form-control" disabled>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Jumlah</label>
-                        <input type="number" id="dmhsnim" class="form-control" disabled>
-                    </div>
-
-                    <!-- <div class="form-group">
-                            <label>Alamat</label>
-                            <textarea class="form-control" id="dmhsalamat" rows="3" disabled></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" id="dmhsemail" class="form-control" disabled>
-                        </div> -->
-
-                    <!-- <input type="text" id="dmhsoldphoto" name="dmhs_oldphoto" hidden required>
-                        <input type="number" id="dmhsid" name="dmhs_id" hidden required> -->
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-success">Hapus</button>
-                    </div>
+                <p>Anda yakin ingin menghapus data barang ini?</p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" id="deleteForm" action="">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-light" type="submit">Hapus</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
+<!-- JavaScript -->
 <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
+    // JavaScript for populating edit modal
+    document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.edit-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const id = button.getAttribute('data-id');
-                const kode_brg = button.getAttribute('data-kode_brg');
-                const nama_brg = button.getAttribute('data-nama_brg');
-                const spesifikasi = button.getAttribute('data-spesifikasi');
-                const thn_pembelian = button.getAttribute('data-thn_pembelian');
-                const kategori = button.getAttribute('data-kategori');
-                const kondisi_baik = button.getAttribute('data-kondisi_baik');
-                const kondisi_rusak = button.getAttribute('data-kondisi_rusak');
-                const jml_akhir = button.getAttribute('data-jml_akhir');
+            button.addEventListener('click', function() {
+                const form = document.getElementById('editForm');
+                form.action = `/barang/update/${this.dataset.id}`;
+                document.getElementById('edit_kode_brg').value = this.dataset.kode_brg;
+                document.getElementById('edit_nama_brg').value = this.dataset.nama_brg;
+                document.getElementById('edit_spesifikasi').value = this.dataset.spesifikasi;
+                document.getElementById('edit_thn_pembelian').value = this.dataset.thn_pembelian;
+                document.querySelector(`input[name="kategori"][value="${this.dataset.kategori}"]`).checked = true;
+                document.getElementById('edit_kondisi_baik').value = this.dataset.kondisi_baik;
+                document.getElementById('edit_kondisi_rusak').value = this.dataset.kondisi_rusak;
+                document.getElementById('edit_jml_akhir').value = this.dataset.jml_akhir;
+            });
+        });
 
-                document.getElementById('id').value = id;
-                document.getElementById('kode_brg').value = kode_brg;
-                document.getElementById('nama_brg').value = nama_brg;
-                document.getElementById('spesifikasi').value = spesifikasi;
-                document.getElementById('thn_pembelian').value = thn_pembelian;
-                document.querySelector(`input[name="kategori"][value="${kategori}"]`).checked = true;
-                document.getElementById('kondisi_baik').value = kondisi_baik;
-                document.getElementById('kondisi_rusak').value = kondisi_rusak;
-                document.getElementById('jml_akhir').value = jml_akhir;
+        // JavaScript for populating delete modal
+        document.querySelectorAll('.delete-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const form = document.getElementById('deleteForm');
+                form.action = `/barang/delete/${this.dataset.id}`;
             });
         });
     });
