@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Leb Fkes</title>
+  <title>Lab Fkes</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -53,13 +53,13 @@
                 <img src="/img/masuk.png" alt="Illustration">
             </div>
             <div class="welcome-text">
-                <h1>Selamat Datang di Aplikasi LebFkes UMMI</h1>
-                <a href=<?=('keluar');?> class="button">MASUK</a>
+                <h1>Selamat Datang di Layanan Laboratorium Fakultas Kesehatan UMMI</h1>
+                <a href=<?=site_url('login')?> class="button">MASUK</a>
             </div>
         </div>
     </main>
     <footer>
-        <p>COPYRIGHT © 2024 Leb Fkes</p>
+        <p>COPYRIGHT © 2024 Lab Fkes</p>
     </footer>
 </body>
 

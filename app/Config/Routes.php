@@ -6,6 +6,8 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
+$routes->get('/', 'Auth::masuk');
+$routes->get('/masuk', 'Auth::masuk');
 $routes->get('/login', 'Auth::login');
 $routes->post('/auth/loginProcess', 'Auth::loginProcess');
 $routes->get('/auth/logout', 'Auth::logout'); 
@@ -44,5 +46,15 @@ $routes->post('/barang/update/(:num)', 'Barang::update/$1');
 $routes->post('/barang/delete/(:segment)', 'Barang::delete/$1');
 $routes->presenter('barang');
 
+$routes->get('prasat/KMD', 'Prasats::KMD');
+$routes->get('prasat/KA', 'Prasats::KA');
+$routes->get('prasat/KM', 'Prasats::KM');
+$routes->get('prasat/KGD', 'Prasats::KGD');
+$routes->get('prasat/KJ', 'Prasats::KJ');
+$routes->get('prasat/KG', 'Prasats::KG');
+$routes->get('prasat/KKOM', 'Prasats::KKOM');
+$routes->get('prasat/KD', 'Prasats::KD');
+$routes->get('prasat/IBD', 'Prasats::IBD');
+$routes->resource('prasats');
 
 
