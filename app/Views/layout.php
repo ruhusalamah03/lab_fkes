@@ -59,13 +59,9 @@
             </li>
 
             <li class="nav-item">
-<<<<<<< HEAD
-                <a class="nav-link" href=<?= base_url('prasat');?>>
-                    <i class="fas fa-medkit contact__icon"></i>
-=======
+
                 <a class="nav-link" href=<?= site_url('prasats');?>>
-                    <i class="fas fa-fw fa-folder"></i>
->>>>>>> 57337709da49856c54477d5fbd255b0f97500162
+                    <i class="fas fa-medkit contact__icon"></i>
                     <span>Prasat</span>
                 </a>
             </li>
