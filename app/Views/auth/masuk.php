@@ -41,7 +41,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href=<?=('home');?>>BERANDA</a></li>
+                <li><a href=<?=('masuk');?>>BERANDA</a></li>
                 <li><a href=<?=('tentang_kami');?>>TENTANG KAMI</a></li>
                 <li><a href=<?=('kontak');?>>KONTAK</a></li>
             </ul>
