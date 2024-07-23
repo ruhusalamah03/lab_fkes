@@ -110,6 +110,7 @@ class Filters extends BaseFilters
             [
                 'labfkes', 
                 'barang/*',
+                'prasat/*',
             ]
         ]
     ];

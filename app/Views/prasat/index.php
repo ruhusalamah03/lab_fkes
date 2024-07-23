@@ -13,59 +13,58 @@
 <body>
 
 <h2 class="section-title">Prasat</h2>
-
 <div class="container bd-grid">
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="KMD">
+    <a href="<?= site_url('prasat/KMD'); ?>">
       <h3 class="contact__title">Keperawatan Medikal Bedah</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="KA">
+    <a href="<?= site_url('prasat/KA'); ?>">
       <h3 class="contact__title">Keperawatan Anak</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="KM">
+    <a href="<?= site_url('prasat/KM'); ?>">
       <h3 class="contact__title">Keperawatan Maternitas</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="KGD">
+    <a href="<?= site_url('prasat/KGD'); ?>">
       <h3 class="contact__title">Keperawatan Gawat Darurat</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="KJ">
+    <a href="<?= site_url('prasat/KJ'); ?>">
       <h3 class="contact__title">Keperawatan Jiwa</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="KG">
+    <a href="<?= site_url('prasat/KG'); ?>">
       <h3 class="contact__title">Keperawatan Gerontik</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="KKOM">
+    <a href="<?= site_url('prasat/KKOM'); ?>">
       <h3 class="contact__title">Keperawatan Komunitas</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="KD">
+    <a href="<?= site_url('prasat/KD'); ?>">
       <h3 class="contact__title">Keperawatan Dasar</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="IBD">
+    <a href="<?= site_url('prasat/IBD'); ?>">
       <h3 class="contact__title">Ilmu Biomedik Dasar</h3>
     </a>
   </div>
