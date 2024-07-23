@@ -28,7 +28,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-4">
-                                        <a href="databarang">
+                                        <a href="<?=site_url('barang');?>">
                                             <div class="h5 mb-0 font-weight-bold text-primary text-uppercase">
                                                 Data Barang</div>
                                         </div>
@@ -45,7 +45,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-4">
-                                        <a href="prasat">
+                                        <a href="<?=site_url('prasats');?>">
                                             <div class="h5 mb-0 font-weight-bold text-info text-uppercase">
                                                 Prasat</div>
                                         </div>
@@ -62,7 +62,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-4">
-                                        <a href="informasi">
+                                        <a href=<?=site_url('informasi');?>>
                                             <div class="h5 mb-0 font-weight-bold text-warning text-uppercase" >
                                                 informasi</div>
                                         </div>

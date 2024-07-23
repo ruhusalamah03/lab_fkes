@@ -10,6 +10,10 @@ class Auth extends BaseController
     {
         $this->db = \Config\Database::connect();
     }
+    public function masuk()
+    {
+        return view('auth/masuk');
+    }
     public function login()
     {
         if(session('id_user')){
