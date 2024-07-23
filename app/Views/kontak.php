@@ -2,9 +2,6 @@
 <?=$this->section('bodycontent')?>
 
 
-<!-- ===== BOX ICONS ===== -->
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
 <!--===== CONTACT ME =====-->
 <section class="contact section bd-container" id="contact">
   <h2 class="section-title">Kontak</h2>

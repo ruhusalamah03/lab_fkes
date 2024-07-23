@@ -160,22 +160,6 @@
                             <label>Jumlah*</label>
                             <input type="number" name="amhs_nim" class="form-control" required>
                         </div>
-
-                        <!-- <div class="form-group">
-                            <label>Alamat*</label>
-                            <textarea class="form-control" name="amhs_alamat" rows="3" required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Email*</label>
-                            <input type="email" name="amhs_email" class="form-control" required>
-                        </div>
-                
-                        <div class="form-group">
-                            <label>Pas Foto (.jpg / .png)</label>
-                            <input type="file" name="amhs_photo" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file">
-                        </div> -->
-
                         <br>
                         *Required
 

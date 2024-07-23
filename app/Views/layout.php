@@ -60,15 +60,9 @@
 
             <li class="nav-item">
                 <a class="nav-link" href=<?= base_url('prasat');?>>
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-medkit contact__icon"></i>
                     <span>Prasat</span>
                 </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href=<?= base_url('laporan');?>>
-                    <i class="fas fa-fw fa-file"></i>
-                    <span>Laporan</span></a>
             </li>
 
             <li class="nav-item">
@@ -83,6 +77,13 @@
                     <i class="fas fa-fw fa-clock"></i>
                     <span>Riwayat Peminjaman</span></a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href=<?= base_url('laporan');?>>
+                    <i class="fas fa-fw fa-file"></i>
+                    <span>Laporan</span></a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href=<?= base_url('kontak');?>>
                     <i class="fas fa-fw fa-phone"></i>

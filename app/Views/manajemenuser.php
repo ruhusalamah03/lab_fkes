@@ -124,10 +124,11 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" enctype="multipart/form-data" action="/admin/addMhs">
-                        <div class="form-group">
-                            <label>NIM Mahasiswa*</label>
-                            <input type="number" name="amhs_nim" class="form-control" required>
+                    <div class="form-group">
+                            <label>Status*</label>
+                            <input type="text" name="amhs_nama" class="form-control" required>
                         </div>
+
 
                         <div class="form-group">
                             <label>Nama Lengkap*</label>
@@ -135,39 +136,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Tanggal Lahir*</label>
-                            <input type="date" name="amhs_dob" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Jenis Kelamin*</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="amhs_jk" value="L">
-                                <label class="form-check-label">Laki-laki</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="amhs_jk" value="P">
-                                <label class="form-check-label">Perempuan</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Alamat*</label>
-                            <textarea class="form-control" name="amhs_alamat" rows="3" required></textarea>
-                        </div>
-
-                        <div class="form-group">
                             <label>Email*</label>
                             <input type="email" name="amhs_email" class="form-control" required>
                         </div>
-                
-                        <div class="form-group">
-                            <label>Pas Foto (.jpg / .png)</label>
-                            <input type="file" name="amhs_photo" accept=".jpg,.png" onchange="ImgFile(this);" class="form-control-file">
-                        </div>
 
-                        <br>
                         *Required
 
                         <div class="modal-footer">

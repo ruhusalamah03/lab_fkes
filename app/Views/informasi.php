@@ -22,14 +22,14 @@
 
             <div class="basic-card basic-card-lips">
                 <div class="card-content">
-                    <span class="card-title">Card Title</span>
+                    <span class="card-title">MISI</span>
                     <p class="card-text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                    1. Menyelenggarakan pendidikan tinggi  kesehatan yang terbuka, mandiri  berdasarkan Al-Islam dan Kemuhammadiyahan.
                     </p>
                 </div>
 
                 <div class="card-link">
-                    <a href="#" title="Read Full"><span>Read Full</span></a>
+               <a target="_blank" rel="nofollow" href="https://ummi.ac.id/id/fakultas/kesehatan">lihat lebih detail</a>
                 </div>
             </div>
 
