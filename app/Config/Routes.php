@@ -48,9 +48,8 @@ $routes->get('prasat/KJ', 'Prasats::KJ');
 $routes->get('prasat/KG', 'Prasats::KG');
 $routes->get('prasat/KKOM', 'Prasats::KKOM');
 $routes->get('prasat/KD', 'Prasats::KD');
-$routes->get('prasat/IBD', 'Prasats::create');
-$routes->post('prasat/IBD/new', 'Prasats::store');
-
+$routes->get('prasat/IBD', 'Prasats::IBD');
+$routes->post('prasat/addIBD', 'Prasats::addIBD');
 $routes->resource('prasats');
 
 
