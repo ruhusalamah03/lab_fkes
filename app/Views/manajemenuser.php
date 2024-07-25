@@ -4,7 +4,13 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= base_url('labfkes'); ?>">Beranda</a></li>
+            <li class="breadcrumb-item">Manajemen User</li>
+        </ol>
+    </nav>
 
 <!-- tabel -->
 <div class="card shadow mb-4">

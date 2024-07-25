@@ -21,6 +21,14 @@
         </div>
     <?php endif; ?>
 
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= base_url('labfkes'); ?>">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('prasats'); ?>">Prasat</a></li>
+            <li class="breadcrumb-item">Keperawatan Dasar</li>
+        </ol>
+    </nav>
+
     <!-- tabel -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">

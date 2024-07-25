@@ -21,6 +21,14 @@
         </div>
     <?php endif; ?>
 
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= base_url('labfkes'); ?>">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('prasats'); ?>">Prasat</a></li>
+            <li class="breadcrumb-item">Ilmu Biomedik Dasar</li>
+        </ol>
+    </nav>
+
     <!-- tabel -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
@@ -72,7 +80,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Kode Barang</th>
+                            <!-- <th>Kode Barang</th> -->
                             <th>Nama Barang</th>
                             <th>Spesifikasi</th>
                             <th>Tahun Pembelian</th>
@@ -80,9 +88,35 @@
                             <th>Kondisi Baik</th>
                             <th>Kondisi Rusak</th>
                             <th>Jumlah Akhir</th>
+                            <th>Kode Barang</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
+                    <tbody>
+                    <?php $i = 1; ?>
+                        <?php foreach ($prasats as $ibd) : ?>
+                            <tr>
+                                <th scope="row"><?= $i++; ?></th>
+                                <!-- <td><?= esc($ibd->kode_brg); ?></td> -->
+                                <td><?= esc($ibd->nama_brg); ?></td>
+                                <td><?= esc($ibd->spesifikasi); ?></td>
+                                <td><?= esc($ibd->thn_pembelian); ?></td>
+                                <td><?= esc($ibd->kategori); ?></td>
+                                <td><?= esc($ibd->kondisi_baik); ?></td>
+                                <td><?= esc($ibd->kondisi_rusak); ?></td>
+                                <td><?= esc($ibd->jml_akhir); ?></td>
+                                <td><?= esc($ibd->kode_brg); ?></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm edit-button" data-toggle="modal" data-target="#modaledit" data-id="<?= esc($ibd->id_prasat); ?>" data-nama_brg="<?= esc($ibd->nama_brg); ?>" data-spesifikasi="<?= esc($ibd->spesifikasi); ?>" data-thn_pembelian="<?= esc($ibd->thn_pembelian); ?>" data-kategori="<?= esc($ibd->kategori); ?>" data-kondisi_baik="<?= esc($ibd->kondisi_baik); ?>" data-kondisi_rusak="<?= esc($ibd->kondisi_rusak); ?>" data-jml_akhir="<?= esc($ibd->jml_akhir); ?>" data-kode_brg="<?= esc($ibd->kode_brg); ?>">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-sm delete-button" data-toggle="modal" data-target="#modaldel" data-id="<?= esc($ibd->id_prasat); ?>">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
                 </table>
             </div>
         </div>
