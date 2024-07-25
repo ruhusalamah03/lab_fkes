@@ -79,11 +79,11 @@
                     <span>Riwayat Peminjaman</span></a>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href=<?= base_url('laporan');?>>
                     <i class="fas fa-fw fa-file"></i>
                     <span>Laporan</span></a>
-            </li>
+            </li> -->
 
             <li class="nav-item">
                 <a class="nav-link" href=<?= base_url('kontak');?>>

@@ -56,7 +56,7 @@
             </div>
 
                  <thead>
-                     <tr>
+                     <tr class="text-center">
                         <th>No</th>
                         <th>Status</th>
                         <th>Nama</th>
@@ -65,49 +65,46 @@
                         </tr>
                         </thead>
                  <tbody>
-                     <tr>
+                     <tr class="text-center">
                         <td>1</td>
                         <td>Admin</td>
                         <td>Sarah</td>
                         <td>@sarah123</td>
-                            <td>
-                            <button class="btn btn-success btn-circle btn-sm modalviewid">
-                                <i class="fa fa-eye"></i></button>
-                            <button class="btn btn-primary btn-sm">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                            <button class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i>
+                         <td>
+                            <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#modalview">
+                                <i class="fa fa-eye"></i></a>
+                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaledit">
+                                <i class="fas fa-pencil-alt"></i></a>
+                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modaldel">
+                                <i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="text-center">
                         <td>2</td>
                         <td>Mahasiawa</td>
                         <td>Azizah</td>
                         <td>@azizah123</td>
-                            <td>
-                            <button class="btn btn-success btn-circle btn-sm modalviewid">
-                                <i class="fa fa-eye"></i></button>
-                            <button class="btn btn-primary btn-sm">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                            <button class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i>
+                        <td>
+                        <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#modalview">
+                        <i class="fa fa-eye"></i></a>
+                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaledit">
+                                <i class="fas fa-pencil-alt"></i></a>
+                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modaldel">
+                                <i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="text-center">
                         <td>3</td>
                         <td>Mahasiswa</td>
                         <td>nana</td>
                         <td>@nana123</td>
-                            <td>
-                            <button class="btn btn-success btn-circle btn-sm modalviewid">
-                                <i class="fa fa-eye"></i></button>
-                            <button class="btn btn-primary btn-sm">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                            <button class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i>
+                        <td>   
+                        <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#modalview">
+                        <i class="fa fa-eye"></i></a>
+                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaledit">
+                                <i class="fas fa-pencil-alt"></i></a>
+                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modaldel">
+                                <i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                 </tbody>
@@ -120,7 +117,7 @@
 
 <!-- Add Modal-->
 <div class="modal fade" id="modaladd" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content text-light bg-primary">
                 <div class="modal-header">
                     <h5 class="modal-title">Tambah Data Mahasiswa</h5>
@@ -158,6 +155,124 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalview" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content text-light bg-success">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detail Data Mahasiswa</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="#" enctype="multipart/form-data" action="#">
+                         
+                    <div class="form-group">
+                            <label>Status*</label>
+                            <input type="text" name="amhs_nama" class="form-control" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Nama Lengkap*</label>
+                            <input type="text" name="amhs_nama" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email*</label>
+                            <input type="email" name="amhs_email" class="form-control" required>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content text-light bg-primary">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ubah Data Mahasiswa</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="/admin/editMhs">
+                    <div class="form-group">
+                            <label>Status*</label>
+                            <input type="text" name="amhs_nama" class="form-control" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Nama Lengkap*</label>
+                            <input type="text" name="amhs_nama" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email*</label>
+                            <input type="email" name="amhs_email" class="form-control" required>
+                        </div>
+
+                        <br>
+                        *Required
+                        
+                        <input type="number" id="emhsid" name="emhs_id" hidden>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modaldel" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-light bg-danger">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hapus Data Mahasiswa Berikut?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="/admin/delMhs">
+                        
+                        <div class="form-group">
+                            <label>Status*</label>
+                            <input type="text" name="amhs_nama" class="form-control" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Nama Lengkap*</label>
+                            <input type="text" name="amhs_nama" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email*</label>
+                            <input type="email" name="amhs_email" class="form-control" required>
+                        </div>
+
+                        <input type="number" id="dmhsid" name="dmhs_id" hidden required>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Hapus</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <!-- End of Main Content -->

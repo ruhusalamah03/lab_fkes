@@ -12,4 +12,12 @@ class BarangModel extends Model
     protected $allowedFields    = ['kode_brg', 'nama_brg', 'spesifikasi', 'thn_pembelian', 'kategori', 'kondisi_baik', 'kondisi_rusak', 'jml_akhir'];
     protected $useTimestamps    = true;
     protected $useSoftDeletes   = true;
+    public function getBarang()
+    {
+        return $this->db->table('databarang')
+                        ->select('*')
+                        ->get()->getResultArray();  
+    }
+
 }
+

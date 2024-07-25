@@ -30,6 +30,7 @@ $routes->get('/peminjaman', 'Home::peminjaman');
 $routes->get('/pengembalian', 'Home::pengembalian');
 $routes->get('/laporan', 'Home::laporan');
 $routes->get('/informasi', 'Home::informasi');
+$routes->get('/riwayatprint', 'Home::riwayatprint');
 
 //ROUTES BARANG
 $routes->get('/barang/create', 'Barang::create');
@@ -37,7 +38,9 @@ $routes->post('/barang/new', 'Barang::store');
 $routes->get('/barang/edit/(:num)', 'Barang::edit/$1');
 $routes->post('/barang/update/(:num)', 'Barang::update/$1');
 $routes->post('/barang/delete/(:segment)', 'Barang::delete/$1');
+$routes->get('/barang/data-print', 'barang::printBarang');
 $routes->presenter('barang');
+
 
 //ROUTES PRASAT
 $routes->get('prasat/KMD', 'Prasats::KMD');
