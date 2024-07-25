@@ -4,10 +4,20 @@ namespace App\Controllers;
 
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
+use App\Models\BarangModel;
+use App\Models\PrasatModel;
 
 class Prasats extends ResourceController
 {
+    protected $barangModel;
+    protected $prasatModel;
     protected $helpers = ['user'];
+
+    function __construct()
+    {
+        $this->barangModel = new BarangModel();
+        $this->prasatModel = new PrasatModel();
+    }
     /**
      * Return an array of resource objects, themselves in array format.
      *
@@ -15,7 +25,8 @@ class Prasats extends ResourceController
      */
     public function index()
     {
-        return view('prasat/index');
+        $data['prasats'] = $this->prasatModel->getAll();
+        return view('prasat/index', $data);
     }
 
     /**
@@ -128,7 +139,7 @@ class Prasats extends ResourceController
 
     public function IBD()
     {
-        return view('prasat/ibd');
+        $data['prasats'] = $this->prasatModel->getAll();
+        return view('prasat/ibd', $data);
     }
-    
 }

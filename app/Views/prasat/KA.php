@@ -23,7 +23,8 @@
 
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url('prasats'); ?>">Prasat</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('labfkes'); ?>">Beranda</a></li>    
+        <li class="breadcrumb-item"><a href="<?= base_url('prasats'); ?>">Prasat</a></li>
             <li class="breadcrumb-item">Keperawatan Anak</li>
         </ol>
     </nav>
