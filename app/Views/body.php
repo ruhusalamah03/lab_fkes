@@ -89,10 +89,9 @@
                                 <div class="card-body">
                                     <div class="text-center">
                                     <img src="<?= base_url('img/leb.jpeg') ?>" alt="Logo2" class="img-fluid your-custom-logo ml-3"style="width: 25rem;">
-                            
                                     </div>
-                                    <p>Fakultas kesehatan yaitu salah satu dari 7 fakultas yang ada di universitas Muhammadiyah Sukabumi,memiliki Leb Kesehatan yang baik<a></a>,
-                                            Laboratorium kesehatan adalah fasilitas yang dirancang untuk menunjang kegiatan mahasiswa </p>
+                                    <p><a>Fakultas kesehatan yaitu salah satu dari 7 fakultas yang ada di universitas Muhammadiyah Sukabumi,memiliki Leb Kesehatan
+                                         yang baik.Laboratorium kesehatan adalah fasilitas yang dirancang untuk menunjang kegiatan mahasiswa </a></p>
                                     <a target="_blank" rel="nofollow" href="https://ummi.ac.id/id/fakultas/kesehatan">Lihat Lebih Rinci &rarr;</a>
                                 </div>
                             </div>

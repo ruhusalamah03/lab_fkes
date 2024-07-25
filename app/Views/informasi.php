@@ -14,10 +14,6 @@
                     Terwujudnya Fakultas Kesehatan yang unggul dalam keilmuan kesehatan dan keislaman pada tahun 2042.
                     </p>
                 </div>
-
-                <div class="card-link">
-                    <a href="#" title="Read Full"><span>Read Full</span></a>
-                </div>
             </div>
 
             <div class="basic-card basic-card-lips">
@@ -35,57 +31,30 @@
 
             <div class="basic-card basic-card-aqua">
                 <div class="card-content">
-                    <span class="card-title">Card Title</span>
+                    <span class="card-title">Tujuan</span>
                     <p class="card-text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                    Terselenggaranya layanan akademik yang berkualitas serta proses pembelajaran yang bermutu berdasarkan hasil-hasil penelitian ilmiah yang akurat dan mutakhir.
                     </p>
                 </div>
 
                 <div class="card-link">
-                    <a href="#" title="Read Full"><span>Read Full</span></a>
+                <a target="_blank" rel="nofollow" href="https://fkes.ummi.ac.id/p/1-visi-misi-dan-tujuan">lihat lebih detail</a>
                 </div>
             </div>
 
             <div class="basic-card basic-card-lips">
                 <div class="card-content">
-                    <span class="card-title">Card Title</span>
+                    <span class="card-title">Sejarah</span>
                     <p class="card-text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                    Fakultas Kesehatan UMMI didirikan untuk merespon kebutuhan masyarakat terhadap pendidikan khususnya dalam bidang kesehatan. 
+                    Fakultas Kesehatan UMMI lahir pada tanggal 16 Mei 2019 sesuai SK Rektor No. 753/KEP/I.0/C/2019 yang terdiri dari dua Program Studi yaitu Program Studi Diploma-III Keperawatan, dan Program Studi Pendidikan Profesi Ners..
                     </p>
                 </div>
 
                 <div class="card-link">
-                    <a href="#" title="Read Full"><span>Read Full</span></a>
+                <a target="_blank" rel="nofollow" href="https://fkes.ummi.ac.id/p/4-sejarah">lihat lebih detail</a>
                 </div>
             </div>
-
-            <div class="basic-card basic-card-aqua">
-                <div class="card-content">
-                    <span class="card-title">Visi Misi</span>
-                    <p class="card-text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                    </p>
-                </div>
-
-                <div class="card-link">
-                    <a href="#" title="Read Full"><span>Read Full</span></a>
-                </div>
-            </div>
-
-            <div class="basic-card basic-card-lips">
-                <div class="card-content">
-                    <span class="card-title">Card Title</span>
-                    <p class="card-text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                    </p>
-                </div>
-
-                <div class="card-link">
-                    <a href="#" title="Read Full"><span>Read Full</span></a>
-                </div>
-            </div>
-
-        
         </div>
         
         <br/>
@@ -234,7 +203,7 @@ body {
             }
 
     .basic-card-lips {
-        background-image: linear-gradient(to bottom right, #4173F2, #ff7d94);
+        background-image: linear-gradient(to bottom right, #6D93F7, #99a3d4);
     }
 
         .basic-card-lips .card-content {
