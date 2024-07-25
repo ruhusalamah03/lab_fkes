@@ -179,4 +179,14 @@ class Barang extends ResourcePresenter
         $this->barangModel->where('id', $id)->delete();
         return redirect()->to(site_url('barang'))->with('success', 'Data Berhasil Dihapus');
     }
+    public function printBarang()
+    {
+        $barang = new BarangModel();
+
+        $data = [
+            'barang' => $barang->getBarang()
+        ];
+
+        return view('barang/data-print', $data);
+    }
 }

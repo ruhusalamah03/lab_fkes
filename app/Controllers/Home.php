@@ -201,4 +201,12 @@ class Home extends BaseController
 
         return view('informasi', $data);
     }
+
+    public function riwayatprint(){
+        $data = [
+            'title' => 'labfkes',
+        ];
+
+        return view('riwayatprint', $data);
+    }
 }

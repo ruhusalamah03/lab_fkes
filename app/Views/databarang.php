@@ -18,7 +18,7 @@
                 <span class="text">Tambah Data</span>
             </a>
 
-            <a href="/admin/data-mhs-print" target="_blank" class="btn btn-info btn-icon-split btn-sm">
+            <a href="data-print" target="_blank" class="btn btn-info btn-icon-split btn-sm">
                 <span class="icon text-white-50">
                     <i class="fas fa-print"></i>
                 </span>

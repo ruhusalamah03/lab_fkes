@@ -10,9 +10,13 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
         <h6 class="m-0 font-weight-bold text-primary">Riwayat Peminjaman</h6>
-        <!-- <button class="btn btn-success btn-sm">
-            <i class="fas fa-plus"></i> Tambah Data
-        </button> -->
+
+        <a href="riwayatprint" target="_blank" class="btn btn-info btn-icon-split btn-sm">
+                <span class="icon text-white-50">
+                    <i class="fas fa-print"></i>
+                </span>
+                <span class="text">Print Laporan</span>
+            </a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -44,51 +48,42 @@
             </div>
 
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>Nomor</th>
                         <th>Peminjam</th>
                         <th>Jenis Barang</th>
                         <th>Tanggal meminjam</th>
-                        <th>Status Peminjaman</th>
                         <th>Tanggal Kembali</th>
+                        <th>Status Peminjaman</th>
                     </tr>
                 </thead>
-                <!-- <tfoot>
-                    <tr>
-                        <th>Nomor</th>
-                        <th>Nama Barang</th>
-                        <th>Spesifikasi</th>
-                        <th>Tahun Pembelian</th>
-                        <th>Kategori</th>
-                        <th>Kondisi Rusak</th>
-                        <th>Kondisi Baik</th>
-                        <th>Jumlah akhir</th>
-                    </tr>
-                </tfoot> -->
+                
                 <tbody>
-                    <tr>
+                    <tr class="text-center">
                         <td>1</td>
                         <td>Dinda Putri</td>
                         <td>Keperawatan Anak</td>
                         <td>15-03-2024</td>
-                        <td>telah Kembali</td>
                         <td>17-03-2024</td>
+                        <td><a class="btn btn-success btn-sm">Telah Kembali</a></td>
+                        
                     </tr>
-                    <tr>
+                    <tr class="text-center">
                         <td>2</td>
                         <td>Dinda Putri</td>
                         <td>Keperawatan Anak</td>
                         <td>15-03-2024</td>
-                        <td>telah Kembali</td>
                         <td>17-03-2024</td>
+                        <td><a class="btn btn-danger btn-sm">Terlambat</a></td>
                     </tr>
-                    <tr>
+                    <tr class="text-center">
                         <td>3</td>
                         <td>Dinda Putri</td>
                         <td>Keperawatan Anak</td>
                         <td>15-03-2024</td>
-                        <td>telah Kembali</td>
+    
                         <td>17-03-2024</td>
+                        <td><a class="btn btn-success btn-sm">Telah Kembali</a></td>
                     </tr>
                     
                 </tbody>

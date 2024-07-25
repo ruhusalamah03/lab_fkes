@@ -55,18 +55,6 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <!-- <tfoot>
-                    <tr>
-                        <th>Nomor</th>
-                        <th>Nama Barang</th>
-                        <th>Spesifikasi</th>
-                        <th>Tahun Pembelian</th>
-                        <th>Kategori</th>
-                        <th>Kondisi Rusak</th>
-                        <th>Kondisi Baik</th>
-                        <th>Jumlah akhir</th>
-                    </tr>
-                </tfoot> -->
                 <tbody>
                     <tr>
                         <td>1</td>
