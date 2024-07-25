@@ -26,7 +26,7 @@ class Prasats extends ResourceController
     public function index()
     {
         $data['prasats'] = $this->prasatModel->getAll();
-        return view('prasat/index', $data);
+        return view('prasat/IBD', $data);
     }
 
     /**
@@ -58,7 +58,34 @@ class Prasats extends ResourceController
      */
     public function create()
     {
-        //
+        return view('prasat/ibd');
+    }
+
+    public function store()
+    {
+        $kode_brg = $this->request->getPost('kode_brg');
+    
+    // cek jika kode barang sudah ada
+    $existingBarang = $this->prasatModel->where('kode_brg', $kode_brg)->first();
+    
+    if ($existingBarang) {
+        return redirect()->to('/prasats')->with('error', 'Kode Barang sudah ada. Mohon gunakan kode yang lain.');
+    }
+    
+    $data = [
+        'nama_brg' => $this->request->getPost('brg_nama'),
+        'spesifikasi' => $this->request->getPost('spesifikasi'),
+        'thn_pembelian' => $this->request->getPost('thn_pembelian'),
+        'kategori' => $this->request->getPost('kategori'),
+        'kondisi_baik' => $this->request->getPost('kondisi_baik'),
+        'kondisi_rusak' => $this->request->getPost('kondisi_rusak'),
+        'jml_akhir' => $this->request->getPost('jml_akhir'),
+        'kode_brg' => $kode_brg,
+    ];
+
+    $this->prasatModel->insert($data);
+
+    return redirect()->to('/prasats')->with('success', 'Data barang berhasil ditambahkan.');
     }
 
     /**
@@ -139,6 +166,34 @@ class Prasats extends ResourceController
 
     public function IBD()
     {
+        if ($this->request->getMethod() === 'post') {
+            $data = $this->request->getPost();
+            
+            if ($this->validate([
+                'nama_brg' => 'required|min_length[3]|max_length[255]',
+                'spesifikasi' => 'required',
+                'thn_pembelian' => 'required|numeric',
+                'kategori' => 'required',
+                'kondisi_baik' => 'required|numeric',
+                'kondisi_rusak' => 'required|numeric',
+                'jml_akhir' => 'required|numeric',
+                'id' => 'required|numeric'
+            ])) {
+                $this->prasatModel->save([
+                    'nama_brg' => $data['nama_brg'],
+                    'spesifikasi' => $data['spesifikasi'],
+                    'thn_pembelian' => $data['thn_pembelian'],
+                    'kategori' => $data['kategori'],
+                    'kondisi_baik' => $data['kondisi_baik'],
+                    'kondisi_rusak' => $data['kondisi_rusak'],
+                    'jml_akhir' => $data['jml_akhir'],
+                    'id' => $data['id']
+                ]);
+
+                return redirect()->back()->withInput()->with('error', $this->validator->getErrors());
+            }
+        }
+
         $data['prasats'] = $this->prasatModel->getAll();
         return view('prasat/ibd', $data);
     }
