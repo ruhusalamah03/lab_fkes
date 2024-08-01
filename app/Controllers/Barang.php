@@ -23,7 +23,7 @@ class Barang extends ResourcePresenter
     public function index()
     {
         $data['barang'] = $this->barangModel->findAll();
-        return view('barang/index', $data);
+        return view('admin/barang/index', $data);
     }
 
     /**
@@ -45,7 +45,7 @@ class Barang extends ResourcePresenter
      */
     public function new()
     {
-        return view('barang/new');
+        return view('/admin/barang/new');
     }
 
     /**
@@ -56,7 +56,7 @@ class Barang extends ResourcePresenter
      */
     public function create()
     {
-        return view('barang/create');
+        return view('admin/barang/create');
     }
 
     public function store()
@@ -67,7 +67,7 @@ class Barang extends ResourcePresenter
     $existingBarang = $this->barangModel->where('kode_brg', $kode_brg)->first();
     
     if ($existingBarang) {
-        return redirect()->to('/barang')->with('error', 'Kode Barang sudah ada. Mohon gunakan kode yang lain.');
+        return redirect()->to('admin/barang')->with('error', 'Kode Barang sudah ada. Mohon gunakan kode yang lain.');
     }
     
     $data = [
@@ -83,7 +83,7 @@ class Barang extends ResourcePresenter
 
     $this->barangModel->insert($data);
 
-    return redirect()->to('/barang')->with('success', 'Data barang berhasil ditambahkan.');
+    return redirect()->to('admin/barang')->with('success', 'Data barang berhasil ditambahkan.');
     }
 
     /**
@@ -100,7 +100,7 @@ class Barang extends ResourcePresenter
         $barang = $this->barangModel->where('id', $id)->first();
         if(is_object($barang)) {
             $data['barang'] = $barang;
-            return view('barang/edit', $data);
+            return view('admin/barang/edit', $data);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
@@ -132,7 +132,7 @@ class Barang extends ResourcePresenter
     {
         $data = $this->request->getPost();
         $this->barangModel->update($id, $data);
-        return redirect()->to(site_url('barang'))->with('success', 'Data Berhasil Diubah');
+        return redirect()->to(site_url('admin/barang'))->with('success', 'Data Berhasil Diubah');
         // if ($id == null) {
         //     return redirect()->to('/barang')->with('error', 'ID tidak valid.');
         // }
@@ -176,9 +176,12 @@ class Barang extends ResourcePresenter
      */
     public function delete($id = null)
     {
-        $this->barangModel->where('id', $id)->delete();
-        return redirect()->to(site_url('barang'))->with('success', 'Data Berhasil Dihapus');
+    error_log("Delete method called with ID: $id");
+    $this->barangModel->where('id', $id)->delete();
+    return redirect()->to(site_url('/admin/barang'))->with('success', 'Data Berhasil Dihapus');
     }
+
+    
     public function printBarang()
     {
         $barang = new BarangModel();
@@ -187,6 +190,6 @@ class Barang extends ResourcePresenter
             'barang' => $barang->getBarang()
         ];
 
-        return view('barang/data-print', $data);
+        return view('admin/barang/data-print', $data);
     }
 }

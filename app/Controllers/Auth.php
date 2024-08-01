@@ -16,11 +16,15 @@ class Auth extends BaseController
     }
     public function login()
     {
-        if(session('id_user')){
-            return redirect()->to(site_url('labfkes'));
+        $role = session('role');
+        if ($role == 'admin') { 
+            return redirect()->to(site_url('/admin'));
+        } else if ($role == 'user') {
+            return redirect()->to(site_url('user'));
         }
         return view('auth/login');
     }
+    
     
     public function loginProcess()
     {
@@ -29,20 +33,31 @@ class Auth extends BaseController
         $user = $query->getRow();
         if($user){
             if(password_verify($post['password'], $user->password_user)){
-                $params = ['id_user' => $user->id_user];
+                $params = [
+                    'id_user' => $user->id_user,
+                    'role' => $user->role,
+                    'user_name' => $user->name_user
+                ];
                 session()->set($params);
-                return redirect()->to(site_url('labfkes'));
+
+                if($user->role == 'admin'){
+                    return redirect()->to(site_url('admin'));
+                } else if($user->role == 'user'){
+                    return redirect()->to(site_url('user'));
+                } else {
+                    return redirect()->back()->with('error', 'Role tidak ditemukan');
+                } 
             } else {
-                return redirect()->back()->with('error', 'Kata sandi tidak sesuai');
-            }
-        } else{
+                return redirect()->back()->with('error', 'Password salah');
+            } 
+        } else {
             return redirect()->back()->with('error', 'Email tidak ditemukan');
         }
     }
 
     public function logout()
     {
-        session()->remove('id_user');
+        session()->destroy();
         return redirect()->to(site_url('login'));
     }
 }

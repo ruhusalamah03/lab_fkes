@@ -1,5 +1,5 @@
-<?= $this->extend('layout') ?>
-<?= $this->section('bodycontent') ?>
+<?=$this->extend('admin/layout')?>
+<?=$this->section('bodycontent')?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -23,16 +23,16 @@
 
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url('labfkes'); ?>">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('admin/labfkes'); ?>">Beranda</a></li>
             <li class="breadcrumb-item"><a href="<?= base_url('prasats'); ?>">Prasat</a></li>
-            <li class="breadcrumb-item">Keperawatan Medikal Maternitas</li>
+            <li class="breadcrumb-item">Keperawatan Anak</li>
         </ol>
     </nav>
 
     <!-- tabel -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">Data Barang Keperawatan Maternitas</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data Barang Keperawatan Anak</h6>
             <div class="button-group">
                 <a href="#" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#modaladd">
                     <span class="icon text-white-50">
@@ -76,11 +76,9 @@
                             </div>
                         </div>
                     </div>
-
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Kode Barang</th>
                             <th>Nama Barang</th>
                             <th>Spesifikasi</th>
                             <th>Tahun Pembelian</th>
@@ -88,9 +86,34 @@
                             <th>Kondisi Baik</th>
                             <th>Kondisi Rusak</th>
                             <th>Jumlah Akhir</th>
+                            <th>Kode Barang</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($prasats as $ka) : ?>
+                            <tr>
+                                <th scope="row"><?= $i++; ?></th>
+                                <td><?= esc($ka->nama_brg); ?></td>
+                                <td><?= esc($ka->spesifikasi); ?></td>
+                                <td><?= esc($ka->thn_pembelian); ?></td>
+                                <td><?= esc($ka->kategori); ?></td>
+                                <td><?= esc($ka->kondisi_baik); ?></td>
+                                <td><?= esc($ka->kondisi_rusak); ?></td>
+                                <td><?= esc($ka->jml_akhir); ?></td>
+                                <td><?= esc($ka->id); ?></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm edit-button" data-toggle="modal" data-target="#modaledit" data-id_prasat="<?= esc($ka->id_prasat); ?>" data-nama_brg="<?= esc($ka->nama_brg); ?>" data-spesifikasi="<?= esc($ka->spesifikasi); ?>" data-thn_pembelian="<?= esc($ka->thn_pembelian); ?>" data-kategori="<?= esc($ka->kategori); ?>" data-kondisi_baik="<?= esc($ka->kondisi_baik); ?>" data-kondisi_rusak="<?= esc($ka->kondisi_rusak); ?>" data-jml_akhir="<?= esc($ka->jml_akhir); ?>" data-id="<?= esc($ka->id); ?>">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-sm delete-button" data-toggle="modal" data-target="#modaldel" data-id_prasat="<?= esc($ka->id_prasat); ?>">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -117,11 +140,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/barang/new">
+                <form method="post" action="/prasat/ka/new">
                     <?= csrf_field() ?>
+                    <!-- <input type="hidden" name="kategori_prasat" value="KMB"> -->
                     <div class="form-group">
                         <label>Kode Barang*</label>
-                        <input type="text" name="kode_brg" class="form-control" required>
+                        <select name="id" class="form-control" required>
+                            <option value="" hidden></option>
+                            <?php foreach ($barang as $dbarang) : ?>
+                                <option value="<?=$dbarang->id?>"><?=$dbarang->kode_brg?></option>
+                            <?php endforeach;?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Nama Barang*</label>

@@ -108,7 +108,8 @@ class Filters extends BaseFilters
     public array $filters = [
         'isLoggedIn' => ['before' => 
             [
-                'labfkes', 
+                'user/*',
+                'admin/*', 
                 'barang/*',
                 'prasat/*',
             ]

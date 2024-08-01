@@ -28,7 +28,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <?= $this->include('template/sidebar'); ?>
+        <?= $this->include('user/template/sidebar'); ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -38,7 +38,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?= $this->include('template/topbar'); ?>
+                <?= $this->include('user/template/topbar'); ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -83,7 +83,7 @@
                 <div class="modal-body">Tekan "Keluar" jika anda ingin mengakhiri kegiatan.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href=<?=('/');?>>Keluar</a>
+                    <a class="btn btn-primary" href=<?=('auth/logout');?>>Keluar</a>
                 </div>
             </div>
         </div>

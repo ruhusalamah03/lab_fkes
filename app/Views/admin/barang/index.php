@@ -1,4 +1,4 @@
-<?= $this->extend('layout') ?>
+<?= $this->extend('admin/layout') ?>
 <?= $this->section('bodycontent') ?>
 
 <!-- Begin Page Content -->
@@ -23,16 +23,15 @@
 
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url('labfkes'); ?>">Beranda</a></li>
-            <li class="breadcrumb-item"><a href="<?= base_url('prasats'); ?>">Prasat</a></li>
-            <li class="breadcrumb-item">Keperawatan Medikal Bedah</li>
+            <li class="breadcrumb-item"><a href="<?= base_url('admin/labfkes'); ?>">Beranda</a></li>
+            <li class="breadcrumb-item">Barang</li>
         </ol>
     </nav>
 
     <!-- tabel -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">Data Barang Keperawatan Medikal Bedah</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
             <div class="button-group">
                 <a href="#" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#modaladd">
                     <span class="icon text-white-50">
@@ -40,7 +39,7 @@
                     </span>
                     <span class="text">Tambah Data</span>
                 </a>
-                <a href="/admin/data-mhs-print" target="_blank" class="btn btn-info btn-icon-split btn-sm">
+                <a href="barang/data-print" target="_blank" class="btn btn-info btn-icon-split btn-sm">
                     <span class="icon text-white-50">
                         <i class="fas fa-print"></i>
                     </span>
@@ -70,13 +69,12 @@
                         <div class="col-md-6 text-right">
                             <div id="dataTable_filter" class="dataTable_filter">
                                 <label>
-                                    Pencarian:
+                                    pencarian:
                                     <input type="search" class="from-control from-control-sm" placeholder aria-controls="dataTable">
                                 </label>
                             </div>
                         </div>
                     </div>
-
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -91,6 +89,30 @@
                             <th>Aksi</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($barang as $dbarang) : ?>
+                            <tr>
+                                <th scope="row"><?= $i++; ?></th>
+                                <td><?= esc($dbarang->kode_brg); ?></td>
+                                <td><?= esc($dbarang->nama_brg); ?></td>
+                                <td><?= esc($dbarang->spesifikasi); ?></td>
+                                <td><?= esc($dbarang->thn_pembelian); ?></td>
+                                <td><?= esc($dbarang->kategori); ?></td>
+                                <td><?= esc($dbarang->kondisi_baik); ?></td>
+                                <td><?= esc($dbarang->kondisi_rusak); ?></td>
+                                <td><?= esc($dbarang->jml_akhir); ?></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm edit-button" data-toggle="modal" data-target="#modaledit" data-id="<?= esc($dbarang->id); ?>" data-kode_brg="<?= esc($dbarang->kode_brg); ?>" data-nama_brg="<?= esc($dbarang->nama_brg); ?>" data-spesifikasi="<?= esc($dbarang->spesifikasi); ?>" data-thn_pembelian="<?= esc($dbarang->thn_pembelian); ?>" data-kategori="<?= esc($dbarang->kategori); ?>" data-kondisi_baik="<?= esc($dbarang->kondisi_baik); ?>" data-kondisi_rusak="<?= esc($dbarang->kondisi_rusak); ?>" data-jml_akhir="<?= esc($dbarang->jml_akhir); ?>">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-sm delete-button" data-toggle="modal" data-target="#modaldel" data-id="<?= esc($dbarang->id); ?>">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -117,7 +139,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/barang/new">
+                <form method="post" action="/admin/barang/new">
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label>Kode Barang*</label>
@@ -283,6 +305,60 @@
     </div>
 </div>
 
-<!-- End of Main Content -->
+<!-- JavaScript -->
+<script>
+    // JavaScript for populating edit modal
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.edit-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const form = document.getElementById('editForm');
+                form.action = `barang/update/${this.dataset.id}`;
+                document.getElementById('edit_kode_brg').value = this.dataset.kode_brg;
+                document.getElementById('edit_nama_brg').value = this.dataset.nama_brg;
+                document.getElementById('edit_spesifikasi').value = this.dataset.spesifikasi;
+                document.getElementById('edit_thn_pembelian').value = this.dataset.thn_pembelian;
+                document.querySelector(`input[name="kategori"][value="${this.dataset.kategori}"]`).checked = true;
+                document.getElementById('edit_kondisi_baik').value = this.dataset.kondisi_baik;
+                document.getElementById('edit_kondisi_rusak').value = this.dataset.kondisi_rusak;
+                document.getElementById('edit_jml_akhir').value = this.dataset.jml_akhir;
+            });
+        });
+
+        // JavaScript for populating delete modal
+        document.querySelectorAll('.delete-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const form = document.getElementById('deleteForm');
+                form.action = `barang/delete/${this.dataset.id}`;
+            });
+        });
+    });
+</script>
+
+<style>
+    table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center; 
+    vertical-align: middle; 
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    justify-content: center; 
+    align-items: center; 
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+}
+</style>
 
 <?= $this->endSection() ?>

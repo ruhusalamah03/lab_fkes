@@ -1,5 +1,5 @@
 
-<?=$this->extend('layout')?>
+<?=$this->extend('admin/layout')?>
 <?=$this->section('bodycontent')?>
 
 <!-- Begin Page Content -->
@@ -7,7 +7,7 @@
 
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url('labfkes'); ?>">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('admin/labfkes'); ?>">Beranda</a></li>
             <li class="breadcrumb-item">Manajemen User</li>
         </ol>
     </nav>
@@ -54,7 +54,6 @@
                     </div> 
                 </div> 
             </div>
-
                  <thead>
                      <tr class="text-center">
                         <th>No</th>
@@ -65,7 +64,40 @@
                         </tr>
                         </thead>
                  <tbody>
-                     <tr class="text-center">
+                    <?php foreach ($data_user as $row): ?>
+                        <tr>
+                            <td><?=$row['role_user']?></td>
+                            <td><?=$row['nama_user']?></td>
+                            <td><?=$row['email']?></td>
+                            <td>
+                                <a href="#"
+                                data-toggle="modal" data-target="#modalview" 
+                                data-vroleuser="<?=$row['role_user']?>"
+                                data-vnamauser="<?=$row['nama_user']?>"
+                                data-vemail="<?=$row['email']?>"
+                                class="btn btn-success btn-circle btn-sm modalviewid">
+                                <i class="fa fa-eye"></i></button>
+                                </a>
+                                <a href="#"
+                                data-toggle="modal" data-target="#modaledit" 
+                                data-eroleuser="<?=$row['role_user']?>"
+                                data-enamauser="<?=$row['nama_user']?>"
+                                data-eemail="<?=$row['email']?>"
+                                class="btn btn-success btn-circle btn-sm modaleditid">
+                                <i class="fa fa-pencil"></i></button>
+                                </a>
+                                <a href="#"
+                                data-toggle="modal" data-target="#modaldel" 
+                                data-droleuser="<?=$row['role_user']?>"
+                                data-dnamauser="<?=$row['nama_user']?>"
+                                data-demail="<?=$row['email']?>"
+                                class="btn btn-success btn-circle btn-sm modaldelid">
+                                <i class="fa fa-trash"></i></button>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                     <!-- <tr class="text-center">
                         <td>1</td>
                         <td>Admin</td>
                         <td>Sarah</td>
@@ -106,9 +138,8 @@
                             <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modaldel">
                                 <i class="fas fa-trash"></i></a>
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
-                
             </table>
         </div>
     </div>
@@ -120,7 +151,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content text-light bg-primary">
                 <div class="modal-header">
-                    <h5 class="modal-title">Tambah Data Mahasiswa</h5>
+                    <h5 class="modal-title">Tambah Data User</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

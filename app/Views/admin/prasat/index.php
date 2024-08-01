@@ -1,4 +1,4 @@
-<?=$this->extend('layout')?>
+<?=$this->extend('admin/layout')?>
 <?=$this->section('bodycontent')?>
 
 <!DOCTYPE html>
@@ -16,55 +16,55 @@
 <div class="container bd-grid">
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="<?= site_url('prasat/KMD'); ?>">
+    <a href="<?= site_url('admin/prasat/KMB'); ?>">
       <h3 class="contact__title">Keperawatan Medikal Bedah</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="<?= site_url('prasat/KA'); ?>">
+    <a href="<?= site_url('admin/prasat/KA'); ?>">
       <h3 class="contact__title">Keperawatan Anak</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="<?= site_url('prasat/KM'); ?>">
+    <a href="<?= site_url('admin/prasat/KM'); ?>">
       <h3 class="contact__title">Keperawatan Maternitas</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="<?= site_url('prasat/KGD'); ?>">
+    <a href="<?= site_url('admin/prasat/KGD'); ?>">
       <h3 class="contact__title">Keperawatan Gawat Darurat</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="<?= site_url('prasat/KJ'); ?>">
+    <a href="<?= site_url('admin/prasat/KJ'); ?>">
       <h3 class="contact__title">Keperawatan Jiwa</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="<?= site_url('prasat/KG'); ?>">
+    <a href="<?= site_url('admin/prasat/KG'); ?>">
       <h3 class="contact__title">Keperawatan Gerontik</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="<?= site_url('prasat/KKOM'); ?>">
+    <a href="<?= site_url('admin/prasat/KKOM'); ?>">
       <h3 class="contact__title">Keperawatan Komunitas</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="<?= site_url('prasat/KD'); ?>">
+    <a href="<?= site_url('admin/prasat/KD'); ?>">
       <h3 class="contact__title">Keperawatan Dasar</h3>
     </a>
   </div>
   <div class="contact__box">
     <i class='fas fa-medkit contact__icon'></i>
-    <a href="<?= site_url('prasat/IBD'); ?>">
+    <a href="<?= site_url('admin/prasat/IBD'); ?>">
       <h3 class="contact__title">Ilmu Biomedik Dasar</h3>
     </a>
   </div>

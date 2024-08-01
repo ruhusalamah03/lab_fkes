@@ -1,17 +1,14 @@
-<?=$this->extend('layout')?>
-<?=$this->section('bodycontent')?>
-
+<?=$this->extend('user/template/index')?>
+<?=$this->section('page-content')?>
 
 <!--===== CONTACT ME =====-->
 <section class="contact section bd-container" id="contact">
-  <h2 class="section-title">Kontak</h2>
-
   <div class="contact__container bd-grid">
     <div class="contact__content bd-grid">
       <div class="contact__box">
         <i class="bx bx-home contact__icon"></i>
         <h3 class="contact__title">Alamat</h3>
-        <span class="contact__description">#123 Lima - Peru</span>
+        <span class="contact__description">Jl. R. Syamsudin, S.H. No. 50, Cikole, Kota Sukabumi</span>
       </div>
 
       <div class="contact__box">
@@ -28,11 +25,9 @@
 
       <div class="contact__box">
         <i class="bx bx-chat contact__icon"></i>
-        <h3 class="contact__title">Chat</h3>
+        <h3 class="contact__title">Website</h3>
         <div>
           <a target="_blank" rel="contact__social" href="https://www.facebook.com/fauzanmakarim.rambe"><i class="bx bxl-whatsapp"></i></a>
-          <a target="_blank" rel="contact__social" href="https://www.facebook.com/fauzanmakarim.rambe"><i class="bx bxl-instagram"></i></a>
-          <a target="_blank" rel="contact__social" href="https://www.facebook.com/fauzanmakarim.rambe"><i class="bx bxl-linkedin"></i></a>
         </div>
       </div>
     </div>
@@ -40,7 +35,7 @@
     <form action="" class="contact__form">
       <div class="contact__inputs">
         <input type="text" placeholder="Name" class="contact__input">
-        <input type="email" placeholder="Email" class="contact__input">
+        <input type="int" placeholder="NIM" class="contact__input">
       </div>
 
       <div class="contact__inputs">

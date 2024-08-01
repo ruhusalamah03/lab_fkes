@@ -10,14 +10,16 @@ class AuthSeeder extends Seeder
     {
         $data = [
             [
-                'name_user' => "Sarah Syakira Rambe",
+                'name_user' => "Administrator",
                 'email'     => "sarahrambe073@ummi.ac.id",
-                'password_user' => password_hash('12345', PASSWORD_BCRYPT),
+                'password_user' => password_hash('sarah', PASSWORD_BCRYPT),
+                'role' => 'admin'
             ],
             [
                 'name_user' => "Siti Ruhu Salamah",
                 'email'     => "sruhusalamah@gmail.com",
                 'password_user' => password_hash('ruhu', PASSWORD_BCRYPT),
+                'role' => 'user'
             ]
            
         ];

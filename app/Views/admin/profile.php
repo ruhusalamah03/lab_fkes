@@ -1,5 +1,5 @@
-<?= $this->extend('user/template/index') ?>
-<?= $this->section('page-content') ?>
+<?= $this->extend('admin/layout') ?>
+<?= $this->section('bodycontent') ?>
 
 <!-- <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +91,7 @@
         <div class="pagetitle">
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= base_url('user'); ?>">Beranda</a></li>
+                    <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Beranda</a></li>
                     <li class="breadcrumb-item active">Profile</li>
                 </ol>
             </nav>
@@ -102,7 +102,7 @@
                 <div class="col-xl-4">
                     <div class="card">
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-                            <img class="img-profile rounded-circle" src="<?= base_url('img/ruhu.png') ?>">
+                            <img class="img-profile rounded-circle" src="<?= base_url('img/Sarah.png') ?>">
                             <h2>Sarah Syakira Rambe</h2>
                             <h3>Laboran Fakultas Kesehatan</h3>
                             <!-- <div class="social-links mt-2">
