@@ -53,7 +53,7 @@
                 <div id="collapseInventarisir" class="collapse" aria-labelledby="headingInventarisir" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href=<?= site_url('barang');?>>Data Barang</a>
-                        <a class="collapse-item" href=<?= base_url('barangkeluar');?>>Barang keluar</a>
+                        <!-- <a class="collapse-item" href=<?= base_url('barangkeluar');?>>Barang keluar</a> -->
                         <a class="collapse-item" href=<?= base_url('stokbarang');?>>Stok Barang</a>
                 </div>
             </li>
@@ -77,6 +77,12 @@
                 <a class="nav-link" href=<?= base_url('riwayatpeminjaman');?>>
                     <i class="fas fa-fw fa-clock"></i>
                     <span>Riwayat Peminjaman</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href=<?= base_url('peminjaman');?>>
+                    <i class="fas fa-fw fa-clock"></i>
+                    <span>Peminjaman</span></a>
             </li>
 
             <!-- <li class="nav-item">
