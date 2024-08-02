@@ -1,10 +1,8 @@
-
-<?=$this->extend('admin/layout')?>
-<?=$this->section('bodycontent')?>
+<?= $this->extend('admin/layout') ?>
+<?= $this->section('bodycontent') ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url('admin/labfkes'); ?>">Beranda</a></li>
@@ -12,170 +10,132 @@
         </ol>
     </nav>
 
-<!-- tabel -->
-<div class="card shadow mb-4">
-<div class="card-header py-3 d-flex justify-content-between align-items-center">
-    <h6 class="m-0 font-weight-bold text-primary">Manajemen User</h6>
-    <div class="button-group">
-        <a href="#" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#modaladd">
-            <span class="icon text-white-50">
-                <i class="fas fa-plus"></i>
-            </span>
-            <span class="text">Tambah Data</span>
-        </a>
+    <!-- tabel -->
+    <?php if (session()->getFlashdata('success')) : ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('success') ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
 
-    </div>
-</div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <!-- menu cari -->
-                <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                        <div class="dataTables_length" id="dataTable_length">
-                            <label> Show
-                                <select name ="dataTable_length" aria-controls="dataTable" class="custom-select-sm from-control from-control-sm">
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select>
-                                entries
-                            </label>
+    <?php if (session()->getFlashdata('error')) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('error') ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Manajemen User</h6>
+            <div class="button-group">
+                <a id="addBarang" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#modaladd">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text">Tambah Data</span>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <!-- menu cari -->
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="dataTable_length">
+                                <label> Show
+                                    <select name="dataTable_length" aria-controls="dataTable" class="custom-select-sm from-control from-control-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                    entries
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 text-right">
+                            <div id="dataTable_filter" class="dataTable_filter">
+                                <label>
+                                    Pencarian:
+                                    <input type="search" class="from-control from-control-sm" placeholder aria-controls="dataTable">
+                                </label>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="col-md-6 text-right">
-                    <div id="dataTable_filter" class="dataTable_filter">
-                        <label>
-                            Pencarian:
-                            <input type="search" class="from-control from-control-sm" placeholder aria-controls="dataTable">
-                        </label>
-                    </div> 
-                </div> 
+                    <thead>
+                        <tr class="text-center">
+                            <th>No</th>
+                            <th>NIM</th>
+                            <th>Nama Mahasiswa</th>
+                            <th>Email</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data_user as $row) : ?>
+                            <tr>
+                                <td><?= $i++ ?></td>
+                                <td><?= $row['nim'] ?></td>
+                                <td><?= $row['nama_user'] ?></td>
+                                <td><?= $row['email'] ?></td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm btn-warning edit" data-toggle="modal" data-target="#modal-default" data-id_user="<?= $row['id_user']; ?>"><i class="fa fa-edit"></i></button>
+                                    <a href="<?= base_url('user/delete/' . $row['id_user']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('apakah anda yakin?')"><i class="fa fa-trash"></i></a>
+                                </td>
+                                <!-- <td>
+                                    <a href="#" data-toggle="modal" data-target="#modalview" data-vroleuser="<?= $row['role_user'] ?>" data-vnamauser="<?= $row['nama_user'] ?>" data-vemail="<?= $row['email'] ?>" class="btn btn-success btn-circle btn-sm modalviewid">
+                                        <i class="fa fa-eye"></i></button>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#modaledit" data-eroleuser="<?= $row['role_user'] ?>" data-enamauser="<?= $row['nama_user'] ?>" data-eemail="<?= $row['email'] ?>" class="btn btn-success btn-circle btn-sm modaleditid">
+                                        <i class="fa fa-pencil"></i></button>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#modaldel" data-droleuser="<?= $row['role_user'] ?>" data-dnamauser="<?= $row['nama_user'] ?>" data-demail="<?= $row['email'] ?>" class="btn btn-success btn-circle btn-sm modaldelid">
+                                        <i class="fa fa-trash"></i></button>
+                                    </a>
+                                </td> -->
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
-                 <thead>
-                     <tr class="text-center">
-                        <th>No</th>
-                        <th>Status</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Opsi</th>
-                        </tr>
-                        </thead>
-                 <tbody>
-                    <?php foreach ($data_user as $row): ?>
-                        <tr>
-                            <td><?=$row['role_user']?></td>
-                            <td><?=$row['nama_user']?></td>
-                            <td><?=$row['email']?></td>
-                            <td>
-                                <a href="#"
-                                data-toggle="modal" data-target="#modalview" 
-                                data-vroleuser="<?=$row['role_user']?>"
-                                data-vnamauser="<?=$row['nama_user']?>"
-                                data-vemail="<?=$row['email']?>"
-                                class="btn btn-success btn-circle btn-sm modalviewid">
-                                <i class="fa fa-eye"></i></button>
-                                </a>
-                                <a href="#"
-                                data-toggle="modal" data-target="#modaledit" 
-                                data-eroleuser="<?=$row['role_user']?>"
-                                data-enamauser="<?=$row['nama_user']?>"
-                                data-eemail="<?=$row['email']?>"
-                                class="btn btn-success btn-circle btn-sm modaleditid">
-                                <i class="fa fa-pencil"></i></button>
-                                </a>
-                                <a href="#"
-                                data-toggle="modal" data-target="#modaldel" 
-                                data-droleuser="<?=$row['role_user']?>"
-                                data-dnamauser="<?=$row['nama_user']?>"
-                                data-demail="<?=$row['email']?>"
-                                class="btn btn-success btn-circle btn-sm modaldelid">
-                                <i class="fa fa-trash"></i></button>
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                     <!-- <tr class="text-center">
-                        <td>1</td>
-                        <td>Admin</td>
-                        <td>Sarah</td>
-                        <td>@sarah123</td>
-                         <td>
-                            <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#modalview">
-                                <i class="fa fa-eye"></i></a>
-                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaledit">
-                                <i class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modaldel">
-                                <i class="fas fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr class="text-center">
-                        <td>2</td>
-                        <td>Mahasiawa</td>
-                        <td>Azizah</td>
-                        <td>@azizah123</td>
-                        <td>
-                        <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#modalview">
-                        <i class="fa fa-eye"></i></a>
-                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaledit">
-                                <i class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modaldel">
-                                <i class="fas fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr class="text-center">
-                        <td>3</td>
-                        <td>Mahasiswa</td>
-                        <td>nana</td>
-                        <td>@nana123</td>
-                        <td>   
-                        <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#modalview">
-                        <i class="fa fa-eye"></i></a>
-                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaledit">
-                                <i class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modaldel">
-                                <i class="fas fa-trash"></i></a>
-                        </td>
-                    </tr> -->
-                </tbody>
-            </table>
         </div>
     </div>
-</div>
 
 
-<!-- Add Modal-->
-<div class="modal fade" id="modaladd" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Add Modal-->
+    <div class="modal fade" id="modaladd" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content text-light bg-primary">
                 <div class="modal-header">
                     <h5 class="modal-title">Tambah Data User</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <!-- <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
-                    </button>
+                    </button> -->
                 </div>
-                <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data" action="/admin/addMhs">
-                    <div class="form-group">
-                            <label>Status*</label>
-                            <input type="text" name="amhs_nama" class="form-control" required>
-                        </div>
-
-
+                <form id="form" action="<?= base_url('user/add') ?>" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
                         <div class="form-group">
-                            <label>Nama Lengkap*</label>
-                            <input type="text" name="amhs_nama" class="form-control" required>
+                            <label>NIM</label>
+                            <input type="int" name="nim" id="nim" class="form-control" required>
                         </div>
-
                         <div class="form-group">
-                            <label>Email*</label>
-                            <input type="email" name="amhs_email" class="form-control" required>
+                            <label>Nama Mahasiswa</label>
+                            <input type="text" name="nama_user" id="nim" class="form-control" required>
                         </div>
-
-                        *Required
-
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" id="password" class="form-control" required>
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-success">Tambah</button>
@@ -186,7 +146,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalview" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- <div class="modal fade" id="modalview" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content text-light bg-success">
                 <div class="modal-header">
@@ -197,8 +157,8 @@
                 </div>
                 <div class="modal-body">
                     <form method="#" enctype="multipart/form-data" action="#">
-                         
-                    <div class="form-group">
+
+                        <div class="form-group">
                             <label>Status*</label>
                             <input type="text" name="amhs_nama" class="form-control" required>
                         </div>
@@ -221,9 +181,9 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-hidden="true">
+    </div> -->
+
+    <!-- <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content text-light bg-primary">
                 <div class="modal-header">
@@ -234,7 +194,7 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" enctype="multipart/form-data" action="/admin/editMhs">
-                    <div class="form-group">
+                        <div class="form-group">
                             <label>Status*</label>
                             <input type="text" name="amhs_nama" class="form-control" required>
                         </div>
@@ -252,7 +212,7 @@
 
                         <br>
                         *Required
-                        
+
                         <input type="number" id="emhsid" name="emhs_id" hidden>
 
                         <div class="modal-footer">
@@ -263,9 +223,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class="modal fade" id="modaldel" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- <div class="modal fade" id="modaldel" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content text-light bg-danger">
                 <div class="modal-header">
@@ -276,7 +236,7 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" enctype="multipart/form-data" action="/admin/delMhs">
-                        
+
                         <div class="form-group">
                             <label>Status*</label>
                             <input type="text" name="amhs_nama" class="form-control" required>
@@ -303,9 +263,38 @@
                 </div>
             </div>
         </div>
-    </div>
-
+    </div> -->
 </div>
 <!-- End of Main Content -->
 
-<?=$this->endSection()?>
+<?= $this->endSection() ?>
+<script>
+    $(document).ready(function() {
+        $('#addBuku').on('click', function() {
+            $('.modal-title').html('Tambah Data User');
+            $('#form').attr('action', '<?= base_url('user/add') ?>');
+            $('#nim').val('nim');
+            $('#nama_user').val('');
+            $('#email').val('');
+            $('#password').val('');
+        });
+
+        $(document).on('click', '.edit', function() {
+            let id = $(this).data('id_user');
+            $('.modal-title').html('Edit Data User');
+            $('#form').attr('action', '<?= base_url('user/update/') ?>' + id);
+            $.ajax({
+                url: '<?= base_url('user/getdata/'); ?>'+id,
+                method: 'POST',
+                dataType: 'JSON',
+                data: {id: id },
+                success: function(data) {
+                    $('#nim').val(data.nim);
+                    $('#nama_user').val(data.nama_user);
+                    $('#email').val(data.email);
+                    $('#password').val('');
+                }
+            })
+        });
+    });
+</script>

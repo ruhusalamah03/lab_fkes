@@ -27,8 +27,8 @@ class Admin extends BaseController
 
     public function manajemenuser()
     {
-        $userModel = new \App\Models\UserModel();
-        $data['data_user'] = $userModel->findAll();
+        $manajemenuser = new \App\Models\ManajemenuserModel();
+        $data['data_user'] = $manajemenuser->findAll();
     
         return view('admin/manajemenuser', $data);
     }

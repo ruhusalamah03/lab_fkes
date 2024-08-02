@@ -62,6 +62,15 @@ $routes->group('admin', ['filter' => 'isLoggedIn:admin'], function ($routes) {
     $routes->get('profile', 'Admin::profile');
     $routes->get('prasat/(:any)', 'Prasats::$1'); 
 
+    // Routes Manajemen User
+
+    $routes->get('manajemenuser', 'ManajemenUser::index');
+    $routes->post('manajemenuser/add', 'ManajemenUser::store');
+    $routes->post('manajemenuser/update/(:num)', 'ManajemenUser::update/$1');
+    $routes->get('manajemenuser/delete/(:num)', 'ManajemenUser::delete/$1');
+    $routes->post('manajemenuser/getdata/(:num)', 'ManajemenUser::getData/$1');
+
+
     // Routes Barang
     $routes->get('barang/create', 'Barang::create');
     $routes->post('barang/new', 'Barang::store');
