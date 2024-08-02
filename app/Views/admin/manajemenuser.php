@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url('admin/labfkes'); ?>">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Beranda</a></li>
             <li class="breadcrumb-item">Manajemen User</li>
         </ol>
     </nav>
@@ -78,7 +78,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($data_user as $row) : ?>
+                        <?php $i = 1;
+                        foreach ($data_user as $row) : ?>
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td><?= $row['nim'] ?></td>
@@ -86,19 +87,8 @@
                                 <td><?= $row['email'] ?></td>
                                 <td class="text-center">
                                     <button class="btn btn-sm btn-warning edit" data-toggle="modal" data-target="#modal-default" data-id_user="<?= $row['id_user']; ?>"><i class="fa fa-edit"></i></button>
-                                    <a href="<?= base_url('user/delete/' . $row['id_user']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('apakah anda yakin?')"><i class="fa fa-trash"></i></a>
+                                    <a href="<?= base_url('admin/manajemenuser/delete/' . $row['id_user']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('apakah anda yakin?')"><i class="fa fa-trash"></i></a>
                                 </td>
-                                <!-- <td>
-                                    <a href="#" data-toggle="modal" data-target="#modalview" data-vroleuser="<?= $row['role_user'] ?>" data-vnamauser="<?= $row['nama_user'] ?>" data-vemail="<?= $row['email'] ?>" class="btn btn-success btn-circle btn-sm modalviewid">
-                                        <i class="fa fa-eye"></i></button>
-                                    </a>
-                                    <a href="#" data-toggle="modal" data-target="#modaledit" data-eroleuser="<?= $row['role_user'] ?>" data-enamauser="<?= $row['nama_user'] ?>" data-eemail="<?= $row['email'] ?>" class="btn btn-success btn-circle btn-sm modaleditid">
-                                        <i class="fa fa-pencil"></i></button>
-                                    </a>
-                                    <a href="#" data-toggle="modal" data-target="#modaldel" data-droleuser="<?= $row['role_user'] ?>" data-dnamauser="<?= $row['nama_user'] ?>" data-demail="<?= $row['email'] ?>" class="btn btn-success btn-circle btn-sm modaldelid">
-                                        <i class="fa fa-trash"></i></button>
-                                    </a>
-                                </td> -->
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -118,7 +108,7 @@
                         <span aria-hidden="true">×</span>
                     </button> -->
                 </div>
-                <form id="form" action="<?= base_url('user/add') ?>" method="post" enctype="multipart/form-data">
+                <form id="form" action="<?= base_url('admin/manajemenuser/add') ?>" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="form-group">
                             <label>NIM</label>
@@ -140,13 +130,13 @@
                             <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-success">Tambah</button>
                         </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- <div class="modal fade" id="modalview" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- <div class="modal fade" id="modalview" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content text-light bg-success">
                 <div class="modal-header">
@@ -183,7 +173,7 @@
         </div>
     </div> -->
 
-    <!-- <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content text-light bg-primary">
                 <div class="modal-header">
@@ -225,7 +215,7 @@
         </div>
     </div> -->
 
-    <!-- <div class="modal fade" id="modaldel" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- <div class="modal fade" id="modaldel" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content text-light bg-danger">
                 <div class="modal-header">
@@ -268,33 +258,35 @@
 <!-- End of Main Content -->
 
 <?= $this->endSection() ?>
+
 <script>
     $(document).ready(function() {
-        $('#addBuku').on('click', function() {
+        // Handle click on Add button
+        $('#addBarang').on('click', function() {
             $('.modal-title').html('Tambah Data User');
-            $('#form').attr('action', '<?= base_url('user/add') ?>');
-            $('#nim').val('nim');
+            $('#form').attr('action', '<?= base_url('admin/manajemenuser/add') ?>');
+            $('#nim').val('');
             $('#nama_user').val('');
             $('#email').val('');
             $('#password').val('');
         });
 
+        // Handle click on Edit button
         $(document).on('click', '.edit', function() {
             let id = $(this).data('id_user');
             $('.modal-title').html('Edit Data User');
-            $('#form').attr('action', '<?= base_url('user/update/') ?>' + id);
+            $('#form').attr('action', '<?= base_url('admin/manajemenuser/update/') ?>' + id);
             $.ajax({
-                url: '<?= base_url('user/getdata/'); ?>'+id,
+                url: '<?= base_url('admin/manajemenuser/getdata/'); ?>' + id,
                 method: 'POST',
                 dataType: 'JSON',
-                data: {id: id },
                 success: function(data) {
                     $('#nim').val(data.nim);
                     $('#nama_user').val(data.nama_user);
                     $('#email').val(data.email);
-                    $('#password').val('');
+                    $('#password').val(''); // Password should be empty for edit
                 }
-            })
+            });
         });
     });
 </script>

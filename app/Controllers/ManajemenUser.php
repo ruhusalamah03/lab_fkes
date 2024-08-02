@@ -48,12 +48,12 @@ class ManajemenUser extends BaseController
             'email' => $this->request->getPost('email'),
         ];
 
-        // if ($this->request->getPost('password')) {
-        //     $data['password'] = password_hash($this->request->getPost('password'), PASSWORD_BCRYPT);
-        // }        
-
+        if ($this->request->getPost('password')) {
+            $data['password'] = password_hash((string) $this->request->getPost('password'), PASSWORD_BCRYPT);
+        }
+    
         $this->manajemenuserModel->update($id, $data);
-
+    
         session()->setFlashdata('success', 'Data user berhasil diubah.');
         return redirect()->to(base_url('admin/manajemenuser'));
     }
