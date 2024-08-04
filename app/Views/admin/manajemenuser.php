@@ -86,7 +86,7 @@
                                 <td><?= $row['nama_user'] ?></td>
                                 <td><?= $row['email'] ?></td>
                                 <td class="text-center">
-                                    <button class="btn btn-sm btn-warning edit" data-toggle="modal" data-target="#modal-default" data-id_user="<?= $row['id_user']; ?>"><i class="fa fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-warning edit" data-toggle="modal" data-target="#modal-default" data-id_user="<?= $row['id_user']; ?>" data-nama_user="<?= $row['nama_user']; ?>" data-email="<?= $row['email']; ?>"><i class="fa fa-edit"></i></button>
                                     <a href="<?= base_url('admin/manajemenuser/delete/' . $row['id_user']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('apakah anda yakin?')"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
@@ -172,8 +172,8 @@
             </div>
         </div>
     </div> -->
-
-<!-- <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-hidden="true">
+                        <!-- Update modal -->
+<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content text-light bg-primary">
                 <div class="modal-header">
@@ -182,29 +182,25 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data" action="/admin/editMhs">
+                <form id="form" action="<?= base_url('admin/manajemenuser/update') ?>" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
                         <div class="form-group">
-                            <label>Status*</label>
-                            <input type="text" name="amhs_nama" class="form-control" required>
+                            <label>NIM</label>
+                            <input type="text" name="unim" class="form-control" required>
                         </div>
-
-
                         <div class="form-group">
                             <label>Nama Lengkap*</label>
-                            <input type="text" name="amhs_nama" class="form-control" required>
+                            <input type="text" name="unama_user" class="form-control" required>
                         </div>
-
                         <div class="form-group">
                             <label>Email*</label>
-                            <input type="email" name="amhs_email" class="form-control" required>
+                            <input type="email" name="uemail" class="form-control" required>
                         </div>
-
-                        <br>
-                        *Required
-
-                        <input type="number" id="emhsid" name="emhs_id" hidden>
-
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="upassword" id="password" class="form-control" required>
+                        </div>
+                        <input type="number" id="eid_user" name="eid_user" hidden>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-success">Update</button>
@@ -213,7 +209,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
 <!-- <div class="modal fade" id="modaldel" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -259,6 +255,7 @@
 
 <?= $this->endSection() ?>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
     $(document).ready(function() {
         // Handle click on Add button

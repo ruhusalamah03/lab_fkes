@@ -59,7 +59,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href=<?= site_url('prasats');?>>
+                <a class="nav-link" href=<?= site_url('admin/prasats');?>>
                     <i class="fas fa-medkit contact__icon"></i>
                     <span>Prasat</span>
                 </a>
