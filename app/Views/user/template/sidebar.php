@@ -27,9 +27,9 @@
                 </a>
                 <div id="collapseLayanan" class="collapse" aria-labelledby="headingLayanan" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href=<?=base_url('user/peminjaman');?>>Peminjaman Barang</a>
-                        <!-- <a class="collapse-item" href=<?=('pengembalian');?>>Pengembalian</a>
-                        <a class="collapse-item" href=<?=('peminjaman');?>>Peminjaman</a> -->
+                        <a class="collapse-item" href=<?=base_url('user/peminjamanbarang');?>>Peminjaman Barang</a>
+                        <a class="collapse-item" href=<?=base_url('user/pengembalianbarang');?>>Pengembalian Barang</a>
+                        <!--<a class="collapse-item" href=<?=('peminjaman');?>>Peminjaman</a> -->
                         <!-- <a class="collapse-item" href=<?=('laporan');?>>Laporan</a> -->
                 </div>
             </li>

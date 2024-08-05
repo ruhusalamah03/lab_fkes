@@ -24,12 +24,20 @@ class User extends BaseController
         return view('riwayatpeminjaman', $data);
     }
 
-    public function peminjaman(){
+    public function peminjamanbarang(){
         $data = [
             'title' => 'labfkes',
         ];
 
         return view('user/layanan/peminjamanbarang', $data);
+    }
+
+    public function pengembalianbarang(){
+        $data = [
+            'title' => 'labfkes',
+        ];
+
+        return view('user/layanan/pengembalianbarang', $data);
     }
 
     public function kontak(){

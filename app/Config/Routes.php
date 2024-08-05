@@ -16,7 +16,8 @@ $routes->get('/auth/logout', 'Auth::logout');
 $routes->group('user', ['filter' => 'isLoggedIn:user'], function ($routes) {
   $routes->get('/', 'User::index');
 
-  $routes->get('peminjaman', 'User::peminjaman');
+  $routes->get('peminjamanbarang', 'User::peminjamanbarang');
+  $routes->get('pengembalianbarang', 'User::pengembalianbarang');
   $routes->get('riwayatpeminjaman', 'User::riwayatpeminjaman');
   $routes->get('profile', 'User::profile');
   $routes->get('kontak', 'User::kontak');
