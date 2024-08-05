@@ -53,7 +53,7 @@
                 <div id="collapseInventarisir" class="collapse" aria-labelledby="headingInventarisir" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href=<?= site_url('admin/barang');?>>Data Barang</a>
-                        <a class="collapse-item" href=<?= base_url('barangkeluar');?>>Barang keluar</a>
+                        <!-- <a class="collapse-item" href=<?= base_url('barangkeluar');?>>Barang keluar</a> -->
                         <a class="collapse-item" href=<?= base_url('stokbarang');?>>Stok Barang</a>
                 </div>
             </li>
