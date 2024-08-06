@@ -41,18 +41,6 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href=<?=base_url('antrianpeminjaman');?>>
-                    <i class="fas fa-fw fa-clipboard"></i>
-                    <span>Antrian Peminjaman</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href=<?=base_url('riwayatpeminjaman');?>>
-                    <i class="fas fa-fw fa-clock"></i>
-                    <span>Riwayat Peminjaman</span></a>
-            </li>
-
             <!-- Nav Item - Pengaturan Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSetting"

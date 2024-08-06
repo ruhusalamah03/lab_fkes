@@ -66,6 +66,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" href=<?= site_url('admin/indexAdmin');?>>
+                    <i class="fas fa-medkit contact__icon"></i>
+                    <span>Data Peminjaman</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href=<?= base_url('admin/manajemenuser');?>>
                     <i class="fas fa-fw fa-clipboard"></i>
                     <span>Manajemen User</span>

@@ -1,5 +1,5 @@
-<?=$this->extend('layout')?>
-<?=$this->section('bodycontent')?>
+<?=$this->extend('user/template/index')?>
+<?=$this->section('page-content')?>
 
     <body>
             

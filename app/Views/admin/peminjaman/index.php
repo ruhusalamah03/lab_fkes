@@ -24,15 +24,15 @@
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url('admin/labfkes'); ?>">Beranda</a></li>
-            <li class="breadcrumb-item">Barang</li>
+            <li class="breadcrumb-item">Data Peminjaman</li>
         </ol>
     </nav>
 
     <!-- tabel -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
-            <div class="button-group">
+            <h6 class="m-0 font-weight-bold text-primary">Data Peminjaman</h6>
+            <!-- <div class="button-group">
                 <a href="#" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#modaladd">
                     <span class="icon text-white-50">
                         <i class="fas fa-plus"></i>
@@ -45,7 +45,7 @@
                     </span>
                     <span class="text">Print Data</span>
                 </a>
-            </div>
+            </div> -->
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -77,49 +77,31 @@
                     </div>
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Kode Barang</th>
-                            <th>Nama Barang</th>
-                            <th>Spesifikasi</th>
-                            <th>Tahun Pembelian</th>
-                            <th>Kategori</th>
-                            <th>Kondisi Baik</th>
-                            <th>Kondisi Rusak</th>
-                            <th>Jumlah Akhir</th>
+                            <th>No</th>
+                            <th>Nama User</th>
+                            <th>Barang</th>
+                            <th>status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = ($currentPage - 1) * $perPage + 1; ?>
-                        <?php foreach ($barang as $dbarang) : ?>
-                            <tr>
-                                <th scope="row"><?= $i++; ?></th>
-                                <td><?= esc($dbarang->kode_brg); ?></td>
-                                <td><?= esc($dbarang->nama_brg); ?></td>
-                                <td><?= esc($dbarang->spesifikasi); ?></td>
-                                <td><?= esc($dbarang->thn_pembelian); ?></td>
-                                <td><?= esc($dbarang->kategori); ?></td>
-                                <td><?= esc($dbarang->kondisi_baik); ?></td>
-                                <td><?= esc($dbarang->kondisi_rusak); ?></td>
-                                <td><?= esc($dbarang->jml_akhir); ?></td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm edit-button" data-toggle="modal" data-target="#modaledit" data-id="<?= esc($dbarang->id); ?>" data-kode_brg="<?= esc($dbarang->kode_brg); ?>" data-nama_brg="<?= esc($dbarang->nama_brg); ?>" data-spesifikasi="<?= esc($dbarang->spesifikasi); ?>" data-thn_pembelian="<?= esc($dbarang->thn_pembelian); ?>" data-kategori="<?= esc($dbarang->kategori); ?>" data-kondisi_baik="<?= esc($dbarang->kondisi_baik); ?>" data-kondisi_rusak="<?= esc($dbarang->kondisi_rusak); ?>" data-jml_akhir="<?= esc($dbarang->jml_akhir); ?>">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </button>
-                                    <button class="btn btn-danger btn-sm delete-button" data-toggle="modal" data-target="#modaldel" data-id="<?= esc($dbarang->id); ?>">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
+            <?php $i = 1; ?>
+            <?php foreach ($prasats as $ibd) : ?>
+              <tr>
+                <th scope="row"><?= $i++; ?></th>
+                <td><?= esc($item['userId']); ?></td>
+                <td><?= esc($item['barangId']); ?></td>
+                <td><?= esc($item['status']); ?></td>
+                <td>
+                    <a href="<?= site_url('admin/peminjaman/validasi/' . $item['id']); ?>">Validasi</a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
                 </table>
             </div>
         </div>
-        <div>
-            <?= $pager->links('barang', 'bootstrap_pagination'); ?>
-        </div>
-        <!-- <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                 <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -127,7 +109,7 @@
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item"><a class="page-link" href="#">Next</a></li>
             </ul>
-        </nav> -->
+        </nav>
     </div>
 </div>
 

@@ -22,7 +22,13 @@ class Barang extends ResourcePresenter
    */
   public function index()
   {
-    $data['barang'] = $this->barangModel->findAll();
+    $currentPage = $this->request->getVar('page_barang') ? (int)$this->request->getVar('page_barang') : 1;
+    $perPage = 10;
+    $data['barang'] = $this->barangModel->paginate($perPage, 'barang'); // 'barang' adalah nama grup pagination
+    $data['pager'] = $this->barangModel->pager;
+    $data['currentPage'] = $currentPage;
+    $data['perPage'] = $perPage;
+    // $data['barang'] = $this->barangModel->findAll();
     return view('admin/barang/index', $data);
   }
 

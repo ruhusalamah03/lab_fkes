@@ -56,7 +56,6 @@
 
 /*===== VARIABLES CSS =====*/
 :root{
-  --header-height: 3rem;
 
   /*===== Colors =====*/
   --first-color: #6D93F7;
@@ -66,7 +65,7 @@
   --first-color-lighten: #FBF9F9;
 
   /*===== Font and typography =====*/
-  --body-font: 'Poppins', sans-serif;
+  
   --biggest-font-size: 2.5rem;
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
@@ -82,16 +81,16 @@
 
   /*===== Margins =====*/
   --mb-1: .5rem;
-  --mb-2: 1rem;
+  --mb-2: 2rem;
   --mb-3: 1.5rem;
   --mb-4: 2rem;
   --mb-5: 2.5rem;
   --mb-6: 3rem;
 
   /*===== z index =====*/
-  --z-normal: 1;
+  /* --z-normal: 1;
   --z-tooltip: 10;
-  --z-fixed: 100;
+  --z-fixed: 100; */
 }
   
 @media screen and (min-width: 768px){

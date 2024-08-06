@@ -43,7 +43,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-4">
-                                <a href="<?= site_url('prasats'); ?>">
+                                <a href="<?= site_url('user/prasats'); ?>">
                                     <div class="h5 mb-0 font-weight-bold text-info text-uppercase">
                                         Prasat</div>
                             </div>

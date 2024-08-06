@@ -13,14 +13,21 @@ $routes->get('/login', 'Auth::login');
 $routes->post('/auth/loginProcess', 'Auth::loginProcess');
 $routes->get('/auth/logout', 'Auth::logout');
 
+$routes->get('informasi', 'Home::informasi');
+
 $routes->group('user', ['filter' => 'isLoggedIn:user'], function ($routes) {
   $routes->get('/', 'User::index');
 
   $routes->get('peminjamanbarang', 'User::peminjamanbarang');
+  // $routes->post('peminjamanbarang/validate/(:segment'. 'User::validatePeminjamanbarang/$1');
   $routes->get('pengembalianbarang', 'User::pengembalianbarang');
-  $routes->get('riwayatpeminjaman', 'User::riwayatpeminjaman');
   $routes->get('profile', 'User::profile');
   $routes->get('kontak', 'User::kontak');
+
+  $routes->get('peminjamanbarang', 'PeminjamanBarang::indexUser');
+  $routes->get('peminjamanbarang/pinjam', 'PeminjamanBarang::pinjam');
+  $routes->post('peminjamanbarang/pinjam', 'PeminjamanBarang::pinjam');
+  $routes->post('peminjamanbarang/kembalikan/(:segment)', 'PeminjamanBarang::kembalikan/$1');
 
   // Routes Prasat
   $routes->get('prasats', 'Prasats::index');
@@ -55,13 +62,17 @@ $routes->group('admin', ['filter' => 'isLoggedIn:admin'], function ($routes) {
   $routes->get('manajemenuser', 'Admin::manajemenuser');
   $routes->get('riwayatpeminjaman', 'Admin::riwayatpeminjaman');
   $routes->get('kontak', 'Admin::kontak');
-  $routes->get('peminjaman', 'Admin::peminjaman');
+  $routes->get('peminjamanbarang', 'Admin::peminjamanbarang');
+  // $routes->post('peminjamanbarang/return/(:segment)', 'Admin::peminjamanbarang/returnBarang/$1');
   $routes->get('pengembalian', 'Admin::pengembalian');
   $routes->get('laporan', 'Admin::laporan');
   $routes->get('informasi', 'Admin::informasi');
   $routes->get('riwayatprint', 'Admin::riwayatprint');
   $routes->get('profile', 'Admin::profile');
   $routes->get('prasat/(:any)', 'Prasats::$1');
+
+  // $routes->get('peminjamanbarang', 'PeminjamanBarang::indexAdmin');
+  // $routes->post('peminjamanbarang/validasi/(:segment)', 'PeminjamanBarang::validasi/$1');
 
   // Routes Manajemen User
 
