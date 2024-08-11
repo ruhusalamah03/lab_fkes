@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\BarangModel;
 use App\Models\PrasatModel;
 
+
 class Prasats extends BaseController
 {
   protected $barangModel;
@@ -34,9 +35,10 @@ class Prasats extends BaseController
   public function KMB()
   {
     $matkul = 'KMB';
-
+  
     $data['prasats'] = $this->prasatModel->getPrasatByMatkul($matkul);
     $data['barang'] = $this->barangModel->getAllBarang();
+
 
     if (session()->get('role') == 'admin') {
       return view('admin/prasat/kmb', $data);
@@ -101,6 +103,7 @@ class Prasats extends BaseController
 
     $data['prasats'] = $this->prasatModel->getPrasatByMatkul($matkul);
     $data['barang'] = $this->barangModel->getAllBarang();
+  
 
     if (session()->get('role') == 'admin') {
       return view('admin/prasat/kj', $data);
@@ -114,7 +117,7 @@ class Prasats extends BaseController
   public function KG()
   {
     $matkul = 'KG';
-
+    
     $data['prasats'] = $this->prasatModel->getPrasatByMatkul($matkul);
     $data['barang'] = $this->barangModel->getAllBarang();
 
@@ -162,9 +165,10 @@ class Prasats extends BaseController
   public function IBD()
   {
     $matkul = 'IBD';
-
+  
     $data['prasats'] = $this->prasatModel->getPrasatByMatkul($matkul);
     $data['barang'] = $this->barangModel->getAllBarang();
+    
 
     if (session()->get('role') == 'admin') {
       return view('admin/prasat/ibd', $data);

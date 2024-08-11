@@ -5,6 +5,10 @@ namespace App\Controllers;
 use App\Models\BarangModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourcePresenter;
+use Kint\Zval\Value;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx as ReaderXlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\xlsx;
 
 class Barang extends ResourcePresenter
 {
@@ -24,7 +28,7 @@ class Barang extends ResourcePresenter
   {
     $currentPage = $this->request->getVar('page_barang') ? (int)$this->request->getVar('page_barang') : 1;
     $perPage = 10;
-    $data['barang'] = $this->barangModel->paginate($perPage, 'barang'); // 'barang' adalah nama grup pagination
+    $data['barang'] = $this->barangModel->paginate($perPage, 'barang');
     $data['pager'] = $this->barangModel->pager;
     $data['currentPage'] = $currentPage;
     $data['perPage'] = $perPage;
@@ -213,6 +217,85 @@ class Barang extends ResourcePresenter
       return redirect()->to('/admin/prasat/KKOM')->with('success', 'Data Berhasil Diubah');
     } else {
       return redirect()->back()->with('error', 'Data Gagal Diubah');
+    }
+  }
+
+  public function export()
+  {
+    $barang = $this->barangModel->findAll();
+
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+    $sheet->setCellValue('A1', 'No');
+    $sheet->setCellValue('B1', 'Kode Barang');
+    $sheet->setCellValue('C1', 'Nama Barang');
+    $sheet->setCellValue('D1', 'Spesifikasi');
+    $sheet->setCellValue('E1', 'Tahun Pembelian');
+    $sheet->setCellValue('F1', 'Kategori');
+    $sheet->setCellValue('G1', 'Kondisi Baik');
+    $sheet->setCellValue('H1', 'Kondisi Rusak');
+    $sheet->setCellValue('I1', 'Jumlah Akhir');
+
+    $column = 2;
+    foreach ($barang as $key => $value) {
+      $sheet->setCellValue('A'.$column, ($column-1));
+      $sheet->setCellValue('B'.$column, $value->kode_brg);
+      $sheet->setCellValue('C'.$column, $value->nama_brg);
+      $sheet->setCellValue('D'.$column, $value->spesifikasi);
+      $sheet->setCellValue('E'.$column, $value->thn_pembelian);
+      $sheet->setCellValue('F'.$column, $value->kategori);
+      $sheet->setCellValue('G'.$column, $value->kondisi_baik);
+      $sheet->setCellValue('H'.$column, $value->kondisi_rusak);
+      $sheet->setCellValue('I'.$column, $value->jml_akhir);
+      $column++;
+    }
+    
+    $writer = new Xlsx($spreadsheet);
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheethtml.sheet');
+    header('Content-Disposition: attachment;filename=barang.xlsx');
+    header('Cache-Control: max-age=0');
+    $writer->save('php://output');
+    exit();
+    // $barang = new BarangModel();
+
+    // $data = [
+    //   'barang' => $barang->getAllBarang()
+    // ];
+
+    // return view('admin/barang/export', $data);
+  }
+
+  public function import()
+  {
+    $file = $this->request->getFile('file_excel');
+    $extension = $file->getClientExtension();
+    if ($extension == 'xlsx' || $extension == 'xls') {
+      if ($extension == 'xls') {
+        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+      } else {
+        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+      }
+      $spreadsheet = $reader->load($file);
+      $barang = $spreadsheet->getActiveSheet()->toArray();
+      foreach ($barang as $key => $value) {
+        if($key == 0) {
+          continue;
+        }
+        $data = [
+          'kode_brg' => $value[1],
+          'nama_brg' => $value[2],
+          'spesifikasi' => $value[3],
+          'thn_pembelian' => $value[4],
+          'kategori' => $value[5],
+          'kondisi_baik' => $value[6],
+          'kondisi_rusak' => $value[7],
+          'jml_akhir' => $value[8],
+        ];
+        $this->barangModel->insert($data);
+      }
+      return redirect()->back()->with('success', 'Data excel berhasil diimport');
+    } else {
+        return redirect()->back()->with('error', 'Format file tidak sesuai');
     }
   }
 }

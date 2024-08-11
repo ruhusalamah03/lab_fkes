@@ -3,347 +3,279 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <?php if (session()->getFlashdata('success')) : ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <?= session()->getFlashdata('success') ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    <?php endif; ?>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="<?= base_url('admin/labfkes'); ?>">Beranda</a></li>
+      <li class="breadcrumb-item">Data Peminjaman</li>
+    </ol>
+  </nav>
 
-    <?php if (session()->getFlashdata('error')) : ?>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <?= session()->getFlashdata('error') ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    <?php endif; ?>
+  <?php if (session()->getFlashdata('success')) : ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <?= session()->getFlashdata('success') ?>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <?php endif; ?>
 
-    <nav>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url('admin/labfkes'); ?>">Beranda</a></li>
-            <li class="breadcrumb-item">Data Peminjaman</li>
-        </ol>
-    </nav>
+  <?php if (session()->getFlashdata('error')) : ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <?= session()->getFlashdata('error') ?>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <?php endif; ?>
 
-    <!-- tabel -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">Data Peminjaman</h6>
-            <!-- <div class="button-group">
-                <a href="#" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#modaladd">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    <span class="text">Tambah Data</span>
-                </a>
-                <a href="barang/data-print" target="_blank" class="btn btn-info btn-icon-split btn-sm">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-print"></i>
-                    </span>
-                    <span class="text">Print Data</span>
-                </a>
-            </div> -->
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <!-- menu cari -->
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6">
-                            <div class="dataTables_length" id="dataTable_length">
-                                <label> Show
-                                    <select name="dataTable_length" aria-controls="dataTable" class="custom-select-sm from-control from-control-sm">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select>
-                                    entries
-                                </label>
-                            </div>
-                        </div>
+  <!-- tabel -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+      <h6 class="m-0 font-weight-bold text-primary">Data Peminjaman</h6>
+    </div>
 
-                        <div class="col-md-6 text-right">
-                            <div id="dataTable_filter" class="dataTable_filter">
-                                <label>
-                                    pencarian:
-                                    <input type="search" class="from-control from-control-sm" placeholder aria-controls="dataTable">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama User</th>
-                            <th>Barang</th>
-                            <th>status</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            <?php $i = 1; ?>
-            <?php foreach ($prasats as $ibd) : ?>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <!-- menu cari -->
+          <div class="row justify-content-end">
+            <div class="col-md-6 text-right">
+              <div id="dataTable_filter" class="dataTable_filter">
+                <label>
+                  pencarian:
+                  <input type="search" class="from-control from-control-sm" placeholder aria-controls="dataTable">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Peminjam</th>
+              <th>Nama Barang</th>
+              <th>Tanggal Pinjam</th>
+              <th>Tanggal Kembali</th>
+              <th>Catatan</th>
+              <th>Status Persetujuan</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php $i = 1 + ($peminjaman['pager']->getCurrentPage() - 1) * $peminjaman['pager']->getPerPage() ?>
+            <?php foreach ($peminjaman['data'] as $row) : ?>
               <tr>
-                <th scope="row"><?= $i++; ?></th>
-                <td><?= esc($item['userId']); ?></td>
-                <td><?= esc($item['barangId']); ?></td>
-                <td><?= esc($item['status']); ?></td>
+                <td><?= $i++ ?></td>
+                <td><?= $row['nama_user'] ?></td>
+                <td><?= $row['nama_brg'] ?></td>
+                <td><?= $row['tgl_pinjam'] ?></td>
+                <td><?= $row['tgl_kembali'] ?></td>
+                <td class="text-left">
+                  <?php if (empty($row['catatan'])) : ?>
+                    -
+                  <?php else : ?>
+                    <?= strlen($row['catatan']) > 100 ? substr($row['catatan'], 0, 100) . '...' : $row['catatan'] ?>
+                  <?php endif ?>
+                </td>
                 <td>
-                    <a href="<?= site_url('admin/peminjaman/validasi/' . $item['id']); ?>">Validasi</a>
+                  <?php if (isset($row['status'])) : ?>
+                    <?php if ($row['status'] == 'pending') : ?>
+                      <button type="button" class="btn btn-warning" style="cursor: default;">Menunggu Persetujuan</button>
+                    <?php elseif ($row['status'] == 'review') : ?>
+                      <button type="button" class="btn btn-info" style="cursor: default;">Sedang Direview</button>
+                    <?php elseif ($row['status'] == 'approve') : ?>
+                      <button type="button" class="btn btn-success" style="cursor: default;">Disetujui</button>
+                    <?php elseif ($row['status'] == 'reject') : ?>
+                      <button type="button" class="btn btn-danger" style="cursor: default;">Ditolak</button>
+                    <?php endif ?>
+                  <?php endif ?>
+                </td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <button class="dropdown-item detail-button" data-toggle="modal" data-target="#modaldetail" data-id="<?= $row['id'] ?>">Detail</button>
+
+                      <?php if (isset($row['status'])) : ?>
+                        <?php if ($row['status'] == 'approve') : ?>
+                          <form id="dikembalikan-form-<?= $row['id'] ?>" method="post" action="/admin/peminjaman/updatePengembalian">
+                            <?= csrf_field() ?>
+                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                            <button type="submit" class="dropdown-item">Sudah Dikembalikan</button>
+                          </form>
+                        <?php endif ?>
+
+                        <?php if ($row['status'] == 'pending') : ?>
+                          <form id="review-form-<?= $row['id'] ?>" method="post" action="/admin/peminjaman/updateStatus">
+                            <?= csrf_field() ?>
+                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                            <button type="submit" class="dropdown-item" name="status" value="review">Review</button>
+                          </form>
+                        <?php endif ?>
+
+                        <?php if ($row['status'] == 'review') : ?>
+                          <form id="approval-form-<?= $row['id'] ?>" method="post" action="/admin/peminjaman/updateStatus">
+                            <?= csrf_field() ?>
+                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                            <button type="submit" class="dropdown-item" name="status" value="approve">Approve</button>
+                            <button type="submit" class="dropdown-item" name="status" value="reject">Reject</button>
+                          </form>
+                        <?php endif ?>
+                      <?php endif ?>
+                    </div>
+                  </div>
                 </td>
               </tr>
-            <?php endforeach; ?>
+            <?php endforeach ?>
           </tbody>
-                </table>
-            </div>
-        </div>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
+        </table>
+      </div>
+
+      <div class="mt-4">
+        <?= $peminjaman['pager']->links('bootstrap_pagination') ?>
+      </div>
     </div>
+  </div>
 </div>
 
-<!-- Modal Add -->
-<div class="modal fade" id="modaladd" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content text-light bg-primary">
-            <div class="modal-header">
-                <h5 class="modal-title">Tambah Data Barang</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action="/admin/barang/new">
-                    <?= csrf_field() ?>
-                    <div class="form-group">
-                        <label>Kode Barang*</label>
-                        <input type="text" name="kode_brg" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Nama Barang*</label>
-                        <input type="text" name="brg_nama" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Spesifikasi*</label>
-                        <input type="text" name="spesifikasi" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Tahun Pembelian (yyyy)*</label>
-                        <input type="number" name="thn_pembelian" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Kategori*</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" value="ASET" required>
-                            <label class="form-check-label">Aset</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" value="ALAT" required>
-                            <label class="form-check-label">Alat</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" value="ALAT_BAHAN" required>
-                            <label class="form-check-label">Alat dan Bahan</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" value="HIBAH" required>
-                            <label class="form-check-label">BHP</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" value="PERALATAN" required>
-                            <label class="form-check-label">Hibah</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Kondisi Baik</label>
-                        <input type="number" name="kondisi_baik" class="form-control" value="0">
-                    </div>
-                    <div class="form-group">
-                        <label>Kondisi Rusak</label>
-                        <input type="number" name="kondisi_rusak" class="form-control" value="0">
-                    </div>
-                    <div class="form-group">
-                        <label>Jumlah Akhir</label>
-                        <input type="number" name="jml_akhir" class="form-control" value="0">
-                    </div>
-                    <br>
-                    *Required
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-success">Tambah</button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Edit -->
-<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content text-light bg-primary">
-            <div class="modal-header">
-                <h5 class="modal-title">Edit Data Barang</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" id="editForm" action="">
-                    <?= csrf_field() ?>
-                    <input type="hidden" name="_method" value="post">
-                    <div class="form-group">
-                        <label>Kode Barang*</label>
-                        <input type="text" name="kode_brg" id="edit_kode_brg" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Nama Barang*</label>
-                        <input type="text" name="brg_nama" id="edit_nama_brg" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Spesifikasi*</label>
-                        <input type="text" name="spesifikasi" id="edit_spesifikasi" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Tahun Pembelian (yyyy)*</label>
-                        <input type="number" name="thn_pembelian" id="edit_thn_pembelian" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Kategori*</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="edit_kategori_aset" value="ASET">
-                            <label class="form-check-label">Aset</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="edit_kategori_alat" value="ALAT">
-                            <label class="form-check-label">Alat</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="edit_kategori_alat_bahan" value="ALAT_BAHAN">
-                            <label class="form-check-label">Alat dan Bahan</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="edit_kategori_bhp" value="BHP">
-                            <label class="form-check-label">BHP</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="edit_kategori_hibah" value="HIBAH">
-                            <label class="form-check-label">Hibah</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Kondisi Baik</label>
-                        <input type="number" name="kondisi_baik" id="edit_kondisi_baik" class="form-control" value="0">
-                    </div>
-                    <div class="form-group">
-                        <label>Kondisi Rusak</label>
-                        <input type="number" name="kondisi_rusak" id="edit_kondisi_rusak" class="form-control" value="0">
-                    </div>
-                    <div class="form-group">
-                        <label>Jumlah Akhir</label>
-                        <input type="number" name="jml_akhir" id="edit_jml_akhir" class="form-control" value="0">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-success">Update</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Delete -->
-<div class="modal fade" id="modaldel" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content text-light bg-danger">
-            <div class="modal-header">
-                <h5 class="modal-title">Hapus Data Barang</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Anda yakin ingin menghapus data barang ini?</p>
-            </div>
-            <div class="modal-footer">
-                <form method="post" id="deleteForm" action="/barang/delete/">
-                    <?= csrf_field() ?>
-                    <button class="btn btn-light" type="submit">Hapus</button>
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
-    // JavaScript for populating edit modal
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.edit-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const form = document.getElementById('editForm');
-                form.action = `barang/update/${this.dataset.id}`;
-                document.getElementById('edit_kode_brg').value = this.dataset.kode_brg;
-                document.getElementById('edit_nama_brg').value = this.dataset.nama_brg;
-                document.getElementById('edit_spesifikasi').value = this.dataset.spesifikasi;
-                document.getElementById('edit_thn_pembelian').value = this.dataset.thn_pembelian;
-                document.querySelector(`input[name="kategori"][value="${this.dataset.kategori}"]`).checked = true;
-                document.getElementById('edit_kondisi_baik').value = this.dataset.kondisi_baik;
-                document.getElementById('edit_kondisi_rusak').value = this.dataset.kondisi_rusak;
-                document.getElementById('edit_jml_akhir').value = this.dataset.jml_akhir;
-            });
-        });
+  $(document).ready(function() {
+    $('.detail-button').on('click', function() {
+      const id = $(this).data('id');
+      $.ajax({
+        url: '/admin/peminjaman/detail/' + id,
+        type: 'get',
+        dataType: 'json',
+        success: function(data) {
+          $('#detail_nama_user').val(data.nama_user);
+          $('#detail_nama_brg').val(data.nama_brg);
+          $('#detail_tgl_pinjam').val(data.tgl_pinjam);
+          $('#detail_tgl_kembali').val(data.tgl_kembali);
+          $('#detail_catatan').val(data.catatan);
 
-        // JavaScript for populating delete modal
-        document.querySelectorAll('.delete-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const form = document.getElementById('deleteForm');
-                form.action = `barang/delete/${this.dataset.id}`;
-            });
-        });
+          if (data.status == 'pending') {
+            $('#status').html('<button type="button" class="btn btn-warning" style="cursor: default;">Menunggu Persetujuan</button>');
+          } else if (data.status == 'review') {
+            $('#status').html('<button type="button" class="btn btn-info" style="cursor: default;">Sedang Direview</button>');
+          } else if (data.status == 'approve') {
+            $('#status').html('<button type="button" class="btn btn-success" style="cursor: default;">Disetujui</button>');
+          } else if (data.status == 'reject') {
+            $('#status').html('<button type="button" class="btn btn-danger" style="cursor: default;">Ditolak</button>');
+          }
+
+          if (data.status == 'approve') {
+            if (data.is_dikembalikan == '0') {
+              $('#pengembalian').html('<div class="form-group"><label>Status Dikembalikan</label><div><input type="text" name="is_dikembalikan" id="detail_is_dikembalikan" class="form-control" value="Belum Dikembalikan" readonly></div></div>');
+            } else if (data.is_dikembalikan == '1') {
+              $('#pengembalian').html('<div class="form-group"><label>Status Dikembalikan</label><div><input type="text" name="is_dikembalikan" id="detail_is_dikembalikan" class="form-control" value="Sudah Dikembalikan" readonly></div></div>');
+            }
+          } else {
+            $('#pengembalian').html('');
+          }
+
+          if (data.status == 'approve') {
+            if (data.is_dikembalikan == '0') {
+              $('#footer-action').html('<form id="dikembalikan-form-' + data.id + '" method="post" action="/admin/peminjaman/updatePengembalian">' +
+                '<input type="hidden" name="id" value="' + data.id + '">' +
+                '<button type="submit" class="btn btn-success">Sudah Dikembalikan</button>' +
+                '</form>');
+            }
+          } else if (data.status == 'pending') {
+            $('#footer-action').html('<form id="review-form-' + data.id + '" method="post" action="/admin/peminjaman/updateStatus">' +
+              '<input type="hidden" name="id" value="' + data.id + '">' +
+              '<button type="submit" class="btn btn-info" name="status" value="review">Review</button>' +
+              '</form>');
+          } else if (data.status == 'review') {
+            $('#footer-action').html('<form id="approval-form-' + data.id + '" method="post" action="/admin/peminjaman/updateStatus">' +
+              '<input type="hidden" name="id" value="' + data.id + '">' +
+              '<button type="submit" class="btn btn-success" name="status" value="approve" style="margin-right: 0.5em">Approve</button>' +
+              '<button type="submit" class="btn btn-danger" name="status" value="reject">Reject</button>' +
+              '</form>');
+          } else {
+            $('#footer-action').html('');
+          }
+        }
+      });
     });
+  });
 </script>
 
+<!-- Modal Detail -->
+<div class="modal fade" id="modaldetail" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content text-light bg-primary">
+      <div class="modal-header">
+        <h5 class="modal-title">Detail Peminjaman</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group
+        <label>Nama User</label>
+        <input type=" text" name="nama_user" id="detail_nama_user" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+          <label>Nama Barang</label>
+          <input type="text" name="nama_brg" id="detail_nama_brg" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+          <label>Tanggal Pinjam</label>
+          <input type="text" name="tgl_pinjam" id="detail_tgl_pinjam" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+          <label>Tanggal Kembali</label>
+          <input type="text" name="tgl_kembali" id="detail_tgl_kembali" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+          <label>Catatan</label>
+          <textarea name="catatan" id="detail_catatan" class="form-control" readonly></textarea>
+        </div>
+        <div class="form-group">
+          <label>Status Persetujuan</label>
+          <div id="status">
+          </div>
+        </div>
+        <div id="pengembalian"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Tutup</button>
+
+          <div id="footer-action"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <style>
-    table {
+  table {
     width: 100%;
     border-collapse: collapse;
-}
+  }
 
-th, td {
+  th,
+  td {
     border: 1px solid #ddd;
     padding: 8px;
-    text-align: center; 
-    vertical-align: middle; 
-}
+    text-align: center;
+    vertical-align: middle;
+  }
 
-th {
+  th {
     background-color: #f2f2f2;
     font-weight: bold;
-    justify-content: center; 
-    align-items: center; 
-}
+    justify-content: center;
+    align-items: center;
+  }
 
-thead {
+  thead {
     position: sticky;
     top: 0;
     background-color: #fff;
-}
+  }
 </style>
 
 <?= $this->endSection() ?>

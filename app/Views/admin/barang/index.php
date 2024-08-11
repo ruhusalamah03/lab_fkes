@@ -39,11 +39,23 @@
                     </span>
                     <span class="text">Tambah Data</span>
                 </a>
-                <a href="barang/data-print" target="_blank" class="btn btn-info btn-icon-split btn-sm">
+                <a href="barang/data-print" target="_blank" class="btn btn-primary btn-icon-split btn-sm">
                     <span class="icon text-white-50">
                         <i class="fas fa-print"></i>
                     </span>
                     <span class="text">Print Data</span>
+                </a>
+                <a href="barang/export" target="_blank" class="btn btn-primary btn-icon-split btn-sm">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-file-download"></i>
+                    </span>
+                    <span class="text">Export Excel</span>
+                </a>
+                <a href="admin/barang/import" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#modal-import-barang">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-file-upload"></i>
+                    </span>
+                    <span class="text">Upload File</span>
                 </a>
             </div>
         </div>
@@ -119,15 +131,6 @@
         <div>
             <?= $pager->links('barang', 'bootstrap_pagination'); ?>
         </div>
-        <!-- <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav> -->
     </div>
 </div>
 
@@ -337,31 +340,59 @@
     });
 </script>
 
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-import-barang">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Import File</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?= site_url('admin/barang/import') ?>" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <label>File Excel</label>
+                    <div class="custom-file">
+                        <?= csrf_field() ?>
+                        <input type="file" name="file_excel" class="custom-file-input" id="file_excel" required />
+                        <label for="file_excel" class="custom-file-label">Pilih File</label>
+                    </div>
+                </div>
+                <div class="modal-footer bg-whitesmoke br">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <style>
     table {
-    width: 100%;
-    border-collapse: collapse;
-}
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center; 
-    vertical-align: middle; 
-}
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+        vertical-align: middle;
+    }
 
-th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-    justify-content: center; 
-    align-items: center; 
-}
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        justify-content: center;
+        align-items: center;
+    }
 
-thead {
-    position: sticky;
-    top: 0;
-    background-color: #fff;
-}
+    thead {
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+    }
 </style>
 
 <?= $this->endSection() ?>

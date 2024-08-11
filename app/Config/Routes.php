@@ -18,16 +18,13 @@ $routes->get('informasi', 'Home::informasi');
 $routes->group('user', ['filter' => 'isLoggedIn:user'], function ($routes) {
   $routes->get('/', 'User::index');
 
-  $routes->get('peminjamanbarang', 'User::peminjamanbarang');
-  // $routes->post('peminjamanbarang/validate/(:segment'. 'User::validatePeminjamanbarang/$1');
-  $routes->get('pengembalianbarang', 'User::pengembalianbarang');
+  $routes->get('peminjaman', 'User::peminjaman');
+  $routes->post('peminjaman/store', 'User::store');
+  $routes->get('peminjaman/detail/(:num)', 'User::getUserDetailPeminjaman/$1');
+  $routes->post('peminjaman/update/(:num)', 'User::updateData/$1');
   $routes->get('profile', 'User::profile');
   $routes->get('kontak', 'User::kontak');
-
-  $routes->get('peminjamanbarang', 'PeminjamanBarang::indexUser');
-  $routes->get('peminjamanbarang/pinjam', 'PeminjamanBarang::pinjam');
-  $routes->post('peminjamanbarang/pinjam', 'PeminjamanBarang::pinjam');
-  $routes->post('peminjamanbarang/kembalikan/(:segment)', 'PeminjamanBarang::kembalikan/$1');
+  $routes->get('informasi', 'User::informasi');
 
   // Routes Prasat
   $routes->get('prasats', 'Prasats::index');
@@ -62,8 +59,6 @@ $routes->group('admin', ['filter' => 'isLoggedIn:admin'], function ($routes) {
   $routes->get('manajemenuser', 'Admin::manajemenuser');
   $routes->get('riwayatpeminjaman', 'Admin::riwayatpeminjaman');
   $routes->get('kontak', 'Admin::kontak');
-  $routes->get('peminjamanbarang', 'Admin::peminjamanbarang');
-  // $routes->post('peminjamanbarang/return/(:segment)', 'Admin::peminjamanbarang/returnBarang/$1');
   $routes->get('pengembalian', 'Admin::pengembalian');
   $routes->get('laporan', 'Admin::laporan');
   $routes->get('informasi', 'Admin::informasi');
@@ -71,11 +66,8 @@ $routes->group('admin', ['filter' => 'isLoggedIn:admin'], function ($routes) {
   $routes->get('profile', 'Admin::profile');
   $routes->get('prasat/(:any)', 'Prasats::$1');
 
-  // $routes->get('peminjamanbarang', 'PeminjamanBarang::indexAdmin');
-  // $routes->post('peminjamanbarang/validasi/(:segment)', 'PeminjamanBarang::validasi/$1');
 
   // Routes Manajemen User
-
   $routes->get('manajemenuser', 'ManajemenUser::index');
   $routes->post('manajemenuser/add', 'ManajemenUser::store');
   $routes->post('manajemenuser/update/(:num)', 'ManajemenUser::update/$1');
@@ -91,6 +83,8 @@ $routes->group('admin', ['filter' => 'isLoggedIn:admin'], function ($routes) {
   $routes->post('barang/update/(:num)', 'Barang::update/$1');
   $routes->post('barang/delete/(:segment)', 'Barang::delete/$1');
   $routes->get('barang/data-print', 'Barang::printBarang');
+  $routes->get('barang/export', 'Barang::export');
+  $routes->post('barang/import', 'Barang::import');
   $routes->presenter('barang');
 
   // Routes Prasat
@@ -132,4 +126,10 @@ $routes->group('admin', ['filter' => 'isLoggedIn:admin'], function ($routes) {
   $routes->post('prasat/ibd/update/(:segment)', 'Barang::updateFromPrasat/$1');
   $routes->post('prasat/delete/(:segment)', 'Prasats::destroy/$1'); 
   $routes->resource('prasats');
+
+  //Peminjaman
+  $routes->get('peminjaman', 'Peminjaman::indexAdmin');
+  $routes->get('peminjaman/detail/(:num)', 'Peminjaman::detail/$1');
+  $routes->post('peminjaman/updateStatus', 'Peminjaman::updateStatus');
+  $routes->post('peminjaman/updatePengembalian', 'Peminjaman::updatePengembalian');
 });

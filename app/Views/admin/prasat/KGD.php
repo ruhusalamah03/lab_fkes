@@ -3,6 +3,15 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
+  
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Beranda</a></li>
+      <li class="breadcrumb-item"><a href="<?= base_url('admin/prasats'); ?>">Prasat</a></li>
+      <li class="breadcrumb-item">Keperawatan Gawat Darurat</li>
+    </ol>
+  </nav>
+
   <?php if (session()->getFlashdata('success')) : ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
       <?= session()->getFlashdata('success') ?>
@@ -21,13 +30,6 @@
     </div>
   <?php endif; ?>
 
-  <nav>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Beranda</a></li>
-      <li class="breadcrumb-item"><a href="<?= base_url('admin/prasats'); ?>">Prasat</a></li>
-      <li class="breadcrumb-item">Keperawatan Gawat Darurat</li>
-    </ol>
-  </nav>
 
   <!-- tabel -->
   <div class="card shadow mb-4">
@@ -39,12 +41,6 @@
             <i class="fas fa-plus"></i>
           </span>
           <span class="text">Tambah Data</span>
-        </a>
-        <a href="/admin/data-mhs-print" target="_blank" class="btn btn-info btn-icon-split btn-sm">
-          <span class="icon text-white-50">
-            <i class="fas fa-print"></i>
-          </span>
-          <span class="text">Print Data</span>
         </a>
       </div>
     </div>

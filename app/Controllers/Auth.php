@@ -38,7 +38,8 @@ class Auth extends BaseController
                 $params = [
                     'id_user' => $user->id_user,
                     'role' => $user->role,
-                    'user_name' => $user->name_user
+                    'user_name' => $user->name_user,
+                    'nim' => $this->db->table('manajemen_user')->getWhere(['email' => $post['email']])->getRow()->nim,
                 ];
                 session()->set($params);
 

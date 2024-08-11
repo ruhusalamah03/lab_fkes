@@ -20,6 +20,13 @@ class BarangModel extends Model
       ->get()->getResultArray();
   }
 
+  public function getAvailableBarang(){
+    return $this->db->table('databarang')
+      ->select('*')
+      ->where('jml_akhir >', 0)
+      ->get()->getResultArray();
+  }
+
   public function getDetailBarang($kode_brg)
   {
     $detailBarang = $this->db()->table('databarang')

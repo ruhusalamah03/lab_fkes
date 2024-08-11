@@ -35,8 +35,10 @@ class PrasatModel extends Model
       $dataPrasat[$key] = array_merge($dataPrasat[$key], $detailBarang[0]);
     }
 
+
     return $dataPrasat;
   }
+  
 
   public function getKMB()
   {
@@ -74,7 +76,7 @@ class PrasatModel extends Model
   public function deletePrasat($id)
   {
     $this->db->table('prasat')
-    -> where('id_prasat', $id)
-    ->delete();
+      ->where('id_prasat', $id)
+      ->delete();
   }
 }
